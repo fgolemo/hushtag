@@ -33,6 +33,33 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
+            .state('app.home.news', {
+                url: "/news",
+                views: {
+                    'news': {
+                        templateUrl: "templates/news.html"
+                    }
+                }
+            })
+
+            .state('app.home.events', {
+                url: "/events",
+                views: {
+                    'events': {
+                        templateUrl: "templates/events.html"
+                    }
+                }
+            })
+
+            .state('app.home.hushtags', {
+                url: "/hushtags",
+                views: {
+                    'hushtags': {
+                        templateUrl: "templates/hushtags.html"
+                    }
+                }
+            })
+
             .state('app.locations', {
                 url: "/locations",
                 views: {
@@ -80,5 +107,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/home');
+        $urlRouterProvider.otherwise('/app/home/news');
     });
