@@ -1,1 +1,7 @@
-/* Empty. Add your own CSS if you like */
+
+.item p.progressbartext {
+    margin-top: 0;
+    color: #999;
+}
+
+

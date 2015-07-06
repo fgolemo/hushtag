@@ -1,7 +1,51 @@
 <ion-view view-title="News">
     <ion-content class="padding">
-        <p>
-            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts">Scientific Facts</a>
-        </p>
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="img/100px.png">
+                <h2>News Article Title 1</h2>
+                <p class="subdued">(7 hrs ago)</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" src="img/500px.png">
+                <p>
+                    This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                    the content is from a card-body consisting of an image and paragraph text. The footer
+                    consists of tabs, icons aligned left, within the card-footer.
+                </p>
+                <!--<div class="row">-->
+                    <!--<div class="col-25">-->
+                        <!--<p class="progressbartext">-->
+                            <!--80 up<br>-->
+                            <!--20 down-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="col-75">-->
+                        <!--<progress max="100" value="80"></progress>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <p class="subdued">
+                    80% cool, 20% meh, 42 comments
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup balanced"></i>
+                    Cool
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsdown assertive"></i>
+                    Meh
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    Comment
+                </a>
+            </div>
+
+        </div>
     </ion-content>
 </ion-view>
