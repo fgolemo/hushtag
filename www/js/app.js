@@ -41,7 +41,8 @@ angular.module('starter', [
                 url: "/news",
                 views: {
                     'news': {
-                        templateUrl: "templates/news.html"
+                        templateUrl: "templates/news.html",
+                        controller: 'NewsCtrl'
                     }
                 }
             })
