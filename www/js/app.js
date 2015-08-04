@@ -52,7 +52,8 @@ angular.module('hushtag', [
                 url: "/events",
                 views: {
                     'events': {
-                        templateUrl: "templates/events.html"
+                        templateUrl: "templates/events.html",
+                        controller: 'EventsCtrl'
                     }
                 }
             })
@@ -61,7 +62,8 @@ angular.module('hushtag', [
                 url: "/hushtags",
                 views: {
                     'hushtags': {
-                        templateUrl: "templates/hushtags.html"
+                        templateUrl: "templates/hushtags.html",
+                        controller: 'HushtagsCtrl'
                     }
                 }
             })
