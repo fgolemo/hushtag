@@ -1,1 +1,1 @@
-var serviceModule = angular.module('starter.services', []);
+var serviceModule = angular.module('hushtag.services', []);

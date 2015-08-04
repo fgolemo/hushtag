@@ -1,1 +1,1 @@
-var controllerModule = angular.module('starter.controllers', []);
+var controllerModule = angular.module('hushtag.controllers', []);

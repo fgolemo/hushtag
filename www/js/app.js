@@ -1,8 +1,8 @@
-angular.module('starter', [
+angular.module('hushtag', [
     'ionic',
     //'ui.bootstrap',
-    'starter.services',
-    'starter.controllers'
+    'hushtag.services',
+    'hushtag.controllers'
 ])
 
     .run(function ($ionicPlatform) {
