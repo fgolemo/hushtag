@@ -1,5 +1,5 @@
 controllerModule
-    .controller('NewsCtrl', function($scope, $ionicModal, $ionicPopover, $ionicPopup) {
+    .controller('NewsCtrl', function($scope, $ionicModal, $ionicPopover, $ionicPopup, TestService) {
 
         //========================
         $ionicModal.fromTemplateUrl('contact-modal.html', {
@@ -55,6 +55,7 @@ controllerModule
             // Execute action
         });
 
+        $scope.ts = new TestService("test");
 
         //=======================
         $scope.showAlert = function() {

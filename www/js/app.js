@@ -1,6 +1,7 @@
 angular.module('starter', [
     'ionic',
     //'ui.bootstrap',
+    'starter.services',
     'starter.controllers'
 ])
 
