@@ -1,0 +1,50 @@
+[
+  {
+    "id": "EVE1",
+    "name": "Steve Aoki",
+    "pics": ["abc.png","def.png"],
+    "description": "desc...",
+    "comments": [],
+    "tags": [],
+    "flags": [],
+    "start": "2015/08/08 21:00",
+    "end": "2015/08/08 23:59",
+    "invite_only": false,
+    "invitees": [],
+    "description": "",
+    "location": "LOC1",
+    "organizer": "ORG1"
+  },
+  {
+    "id": "EVE2",
+    "name": "Melt Festival",
+    "pics": ["gh.png","ij.png"],
+    "description": "desc...2",
+    "comments": [],
+    "tags": [],
+    "flags": [],
+    "start": "2015/08/10",
+    "end": "2015/08/15",
+    "invite_only": false,
+    "invitees": [],
+    "description": "",
+    "location": "LOC2",
+    "organizer": "ORG2"
+  },
+  {
+    "id": "EVE3",
+    "name": "Fiesta Macumba",
+    "pics": ["kl.png","mn.png"],
+    "description": "desc...3",
+    "comments": [],
+    "tags": [],
+    "flags": [],
+    "start": "2015/08/09 23:00",
+    "end": null,
+    "invite_only": false,
+    "invitees": [],
+    "description": "",
+    "location": "LOC3",
+    "organizer": "ORG3"
+  }
+]

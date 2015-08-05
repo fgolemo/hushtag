@@ -2,68 +2,33 @@
     <ion-content class="padding">
         <div class="list">
 
-            <a class="item item-thumbnail-left" href="#">
+            <a ng-repeat="event in events | orderBy:'start'" class="item item-thumbnail-left" href="#">
                 <img src="img/200px.png">
-                <h2>Fiesta Macumba (latin / dance)</h2>
-                <p>tonight 23:00 <br>
-                    Melkweg, Amsterdam, NL (12km)</p>
+                <h2>{{event.name}} (TODO: genre)</h2>
+                <p><span am-time-ago="event.start"></span> (TODO: actual date/time)<br>
+                    (TODO: location info)</p>
             </a>
 
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px2.png">
-                <h2>Steve Aoki (edm / dubstep)</h2>
-                <p>tomorrow 22:00 <br>
-                    Studio 80, Amsterdam, NL (9km)</p>
-            </a>
+            <!--<a class="item item-thumbnail-left" href="#">-->
+                <!--<img src="img/200px.png">-->
+                <!--<h2>Fiesta Macumba (latin / dance)</h2>-->
+                <!--<p>tonight 23:00 <br>-->
+                    <!--Melkweg, Amsterdam, NL (12km)</p>-->
+            <!--</a>-->
 
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px3.png">
-                <h2>Melt Festival (electro / house)</h2>
-                <p>17-19/07/2015 <br>
-                    Ferropolis, DE (342km)</p>
-            </a>
+            <!--<a class="item item-thumbnail-left" href="#">-->
+                <!--<img src="img/200px2.png">-->
+                <!--<h2>Steve Aoki (edm / dubstep)</h2>-->
+                <!--<p>tomorrow 22:00 <br>-->
+                    <!--Studio 80, Amsterdam, NL (9km)</p>-->
+            <!--</a>-->
 
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px.png">
-                <h2>Fiesta Macumba (latin / dance)</h2>
-                <p>tonight 23:00 <br>
-                    Melkweg, Amsterdam, NL (12km)</p>
-            </a>
-
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px2.png">
-                <h2>Steve Aoki (edm / dubstep)</h2>
-                <p>tomorrow 22:00 <br>
-                    Studio 80, Amsterdam, NL (9km)</p>
-            </a>
-
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px3.png">
-                <h2>Melt Festival (electro / house)</h2>
-                <p>17-19/07/2015 <br>
-                    Ferropolis, DE (342km)</p>
-            </a>
-
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px.png">
-                <h2>Fiesta Macumba (latin / dance)</h2>
-                <p>tonight 23:00 <br>
-                    Melkweg, Amsterdam, NL (12km)</p>
-            </a>
-
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px2.png">
-                <h2>Steve Aoki (edm / dubstep)</h2>
-                <p>tomorrow 22:00 <br>
-                    Studio 80, Amsterdam, NL (9km)</p>
-            </a>
-
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/200px3.png">
-                <h2>Melt Festival (electro / house)</h2>
-                <p>17-19/07/2015 <br>
-                    Ferropolis, DE (342km)</p>
-            </a>
+            <!--<a class="item item-thumbnail-left" href="#">-->
+                <!--<img src="img/200px3.png">-->
+                <!--<h2>Melt Festival (electro / house)</h2>-->
+                <!--<p>17-19/07/2015 <br>-->
+                    <!--Ferropolis, DE (342km)</p>-->
+            <!--</a>-->
 
 
         </div>

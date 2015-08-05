@@ -23,9 +23,9 @@ serviceModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q,
                 //case "User":
                 //    return new User(data);
                 //    break;
-                //case "Event":
-                //    return new Event(data);
-                //    break;
+                case "Event":
+                    return new Event(data);
+                    break;
                 //case "Story":
                 //    return new Story(data);
                 //    break;

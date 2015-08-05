@@ -1,21 +1,22 @@
-serviceModule.factory('Hushtag', [function () {
-    function Hushtag(data) {
+serviceModule.factory('Event', [function () {
+    function Event(data) {
         if (data) {
             this.setData(data);
         }
     }
-    Hushtag.prototype = {
+    Event.prototype = {
         id: "",     // unique identifier, either int (unlikely) or string.
-        name: "",   // string, "Amphetamine"
-        family: [], // list of IDs of related substances [42, 13, 9]
+        start: new Date(),  // Date for start
+        start_time: new Date(),// Time for start
+        end: new Date(),    // Date for end
+        end_time: new Date(), // Time for end
+        invite_only: false, // boolean, if it's public or not
+        invitees: [],       // list of IDs of users who are invited or signed up
+        description: "",    // medium string, description of the event, can be multiline
+        location: "",       // ID of a location
+        organizer: "",      // either string (if the event wasn't created by a user) or user ID
+        //genre: "",    // nope, instead we make the users chose from a list of genre tags
         pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
-        dosages: "",// string with short, typical dosage info, "1-2 pills per person per night"
-        legality: "",// medium string with common legality, "highly illegal in almost all countries except Thailand & Indonesia"
-        safety: "", // medium string with common safety advise, "highly addictive, will cause mild depression a few days after consumption"
-        description: "", // short string / one line summary of the drug, "famous party & festival drug that increases social interaction,..."
-        synonyms: [],// list of strings of other known aliases, ["Amp", "Giga", "headsmash"]
-        forms: "",  // short string, common form(s), "usually pills, rarely liquid"
-        uses: [],   // list of IDs of HushtagUse(s), [123, 456]
         comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
@@ -41,5 +42,5 @@ serviceModule.factory('Hushtag', [function () {
         //    });
         //}
     };
-    return Hushtag;
+    return Event;
 }]);
