@@ -28,45 +28,8 @@ controllerModule
         });
 
 
-        //========================
-        $ionicPopover.fromTemplateUrl('my-popover.html', {
-            scope: $scope
-        }).then(function(popover) {
-            $scope.popover = popover;
-        });
-
-
-        $scope.openPopover = function($event) {
-            $scope.popover.show($event);
-        };
-        $scope.closePopover = function() {
-            $scope.popover.hide();
-        };
-        //Cleanup the popover when we're done with it!
-        $scope.$on('$destroy', function() {
-            $scope.popover.remove();
-        });
-        // Execute action on hide popover
-        $scope.$on('popover.hidden', function() {
-            // Execute action
-        });
-        // Execute action on remove popover
-        $scope.$on('popover.removed', function() {
-            // Execute action
-        });
 
         $scope.ts = new TestService("test");
-
-        //=======================
-        $scope.showAlert = function() {
-            var alertPopup = $ionicPopup.alert({
-                title: 'XTC',
-                template: '(I have no idea how to add content in here, except for text. So we should probably not use this one. But yay, text.)'
-            });
-            alertPopup.then(function(res) {
-                console.log('Thank you for not eating my delicious ice cream cone');
-            });
-        };
 
     })
 ;

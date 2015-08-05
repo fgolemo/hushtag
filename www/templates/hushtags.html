@@ -5,73 +5,22 @@
             <div class="list list-inset">
                 <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Search">
+                    <input type="text" placeholder="Search (just start typing)" ng-model="query">
                 </label>
             </div>
 
-            <div class="item item-divider">
-                A
-            </div>
-
-            <a class="item" href="#">
-                Adderal
+            <a ng-repeat="ht in hushtags | filter:query | orderBy:'name'" class="item" href="#">
+                {{ht.name}}
             </a>
 
-            <a class="item" href="#">
-                Alcohol
-            </a>
+            <!--<div class="item item-divider">-->
+                <!--A-->
+            <!--</div>-->
 
-            <a class="item" href="#">
-                Ambian
-            </a>
 
-            <a class="item" href="#">
-                Amphetamine
-            </a>
-
-            <a class="item" href="#">
-                Amytal
-            </a>
-
-            <div class="item item-divider">
-                B
-            </div>
-
-            <a class="item" href="#">
-                Biocodone
-            </a>
-
-            <a class="item" href="#">
-                Buprenorphine
-            </a>
-
-            <a class="item" href="#">
-                Butalbital
-            </a>
-
-            <div class="item item-divider">
-                C
-            </div>
-
-            <a class="item" href="#">
-                Clonazepam
-            </a>
-
-            <a class="item" href="#">
-                Cocaine
-            </a>
-
-            <a class="item" href="#">
-                Codeine
-            </a>
-
-            <a class="item" href="#">
-                Concerta
-            </a>
-
-            <a class="item" href="#">
-                ...
-            </a>
+            <!--<div class="item item-divider">-->
+                <!--C-->
+            <!--</div>-->
 
         </div>
     </ion-content>
