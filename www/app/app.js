@@ -63,6 +63,16 @@ angular.module('hushtag', [
                     }
                 }
             })
+            .state('app.home.event', {
+                url: "/events/:event",
+                cache: false,
+                views: {
+                    'events': {
+                        templateUrl: "app/events/event.info.html",
+                        controller: 'EventInfoCtrl'
+                    }
+                }
+            })
 
             .state('app.home.hushtags', {
                 url: "/hushtags",

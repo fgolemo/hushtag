@@ -80,6 +80,7 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, 
             //$http.get('ourserver/books')
             $http.get('http://localhost:8100/data/'+objName.toLowerCase()+'.json')
                 .success(function (results) {
+                    console.log(results);
                     var out = [];
                     results.forEach(function (data) {
                         var instance = scope._retrieveInstance(data.id, data);

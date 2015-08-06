@@ -1,11 +1,12 @@
-<ion-view view-title="Events">
+<ion-view view-title="Events" hide-back-button="false">
     <ion-content class="padding">
         <div class="list">
 
             <a ng-repeat="event in events | orderBy:'start'"
                class="item item-thumbnail-left"
-               href="#"
-               ng-click="openModal()">
+               href="#/app/home/events/{{event.id}}">
+               <!--ng-click="openModal()"-->
+
                 <img src="img/200px.png">
                 <h2>{{event.name}} (TODO: genre)</h2>
                 <time title="{{ event.start | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ event.start | amCalendar }}</time>
