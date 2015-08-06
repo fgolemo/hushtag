@@ -1,4 +1,4 @@
-controllerModule
+eventsModule
     .controller('EventsCtrl', function ($scope, Manager) {
         var eventManager = new Manager("Event");
         eventManager.loadAll().then(function(events) {

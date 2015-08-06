@@ -5,6 +5,7 @@ angular.module('hushtag', [
     'hushtag.services',
     'hushtag.controllers',
     'hushtag.shared',
+    'hushtag.events',
     'hushtag.hushtags'
 ])
 
@@ -56,7 +57,7 @@ angular.module('hushtag', [
                 url: "/events",
                 views: {
                     'events': {
-                        templateUrl: "templates/events.html",
+                        templateUrl: "app/events/events.html",
                         controller: 'EventsCtrl'
                     }
                 }
@@ -66,7 +67,7 @@ angular.module('hushtag', [
                 url: "/hushtags",
                 views: {
                     'hushtags': {
-                        templateUrl: "js/hushtags/hushtags.html",
+                        templateUrl: "app/hushtags/hushtags.html",
                         controller: 'HushtagsCtrl'
                     }
                 }

@@ -1,4 +1,4 @@
-serviceModule.factory('Event', [function () {
+eventsModule.factory('Event', [function () {
     function Event(data) {
         if (data) {
             this.setData(data);
