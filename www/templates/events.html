@@ -1,11 +1,13 @@
 <ion-view view-title="Events">
     <ion-content class="padding">
         <div class="list">
-
+            
             <a ng-repeat="event in events | orderBy:'start'" class="item item-thumbnail-left" href="#">
                 <img src="img/200px.png">
                 <h2>{{event.name}} (TODO: genre)</h2>
-                <p><span am-time-ago="event.start"></span> (TODO: actual date/time)<br>
+                <time title="{{ event.start | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ event.start | amCalendar }}</time>
+                    <!--TODO: add end time-->
+                    <br>
                     (TODO: location info)</p>
             </a>
 
