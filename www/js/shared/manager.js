@@ -1,4 +1,4 @@
-serviceModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, Hushtag) {
+sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, Hushtag) {
     return function (objName) {
         this._objCreator = function(data){
             switch (objName) {

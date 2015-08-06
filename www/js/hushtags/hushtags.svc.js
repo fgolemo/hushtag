@@ -1,4 +1,4 @@
-serviceModule.factory('Hushtag', [function () {
+hushtagsModule.factory('Hushtag', [function () {
     function Hushtag(data) {
         if (data) {
             this.setData(data);

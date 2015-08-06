@@ -3,7 +3,9 @@ angular.module('hushtag', [
     //'ui.bootstrap',
     'angularMoment',
     'hushtag.services',
-    'hushtag.controllers'
+    'hushtag.controllers',
+    'hushtag.shared',
+    'hushtag.hushtags'
 ])
 
     .run(function ($ionicPlatform, amMoment) {
@@ -64,7 +66,7 @@ angular.module('hushtag', [
                 url: "/hushtags",
                 views: {
                     'hushtags': {
-                        templateUrl: "templates/hushtags.html",
+                        templateUrl: "js/hushtags/hushtags.html",
                         controller: 'HushtagsCtrl'
                     }
                 }
