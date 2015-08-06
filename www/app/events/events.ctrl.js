@@ -4,8 +4,7 @@ eventsModule
         eventManager.loadAll().then(function(events) {
             $scope.events = events;
         });
-        var m = new Modal($scope, "app/events/events.modal.html", function(){console.log("opened event modal")}, angular.noop);
+        var m = new Modal($scope, "app/events/events.modal.html", angular.noop, angular.noop);
         m.init();
-        console.log("modal setup for event done");
     })
 ;

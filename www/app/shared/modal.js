@@ -2,12 +2,10 @@ sharedModule.factory('Modal', ['$ionicModal', function ($ionicModal) {
     return function (scope, template, openCB, closeCB) {
 
         this.init = function () {
-            console.log("starting modal setup for "+template);
             $ionicModal.fromTemplateUrl(template, {
                 scope: scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
-                console.log("set up: modal from "+template);
                 scope.modal = modal;
             });
             scope.openModal = function() {
