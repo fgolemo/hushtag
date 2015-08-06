@@ -5,6 +5,7 @@ angular.module('hushtag', [
     'hushtag.services',
     'hushtag.controllers',
     'hushtag.shared',
+    'hushtag.core',
     'hushtag.events',
     'hushtag.hushtags'
 ])
@@ -30,7 +31,7 @@ angular.module('hushtag', [
             .state('app', {
                 url: "/app",
                 abstract: true,
-                templateUrl: "templates/app.html",
+                templateUrl: "app/core/app.html",
                 controller: 'AppCtrl'
             })
 
@@ -38,7 +39,7 @@ angular.module('hushtag', [
                 url: "/home",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/home.html"
+                        templateUrl: "app/core/home.html"
                     }
                 }
             })
