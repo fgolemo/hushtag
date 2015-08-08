@@ -1,4 +1,4 @@
-sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, Hushtag) {
+sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', function ($http, $q, Hushtag, Event, Location) {
     return function (objName) {
         this._objCreator = function(data){
             switch (objName) {
@@ -17,9 +17,9 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, 
                 //case "Pic":
                 //    return new Pic(data);
                 //    break;
-                //case "Location":
-                //    return new Location(data);
-                //    break;
+                case "Location":
+                    return new Location(data);
+                    break;
                 //case "User":
                 //    return new User(data);
                 //    break;
@@ -42,7 +42,7 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, 
             if (instance) {
                 instance.setData(data);
             } else {
-                instance = new Hushtag(data);
+                instance = this._objCreator(data);
                 this._pool[id] = instance;
             }
 
@@ -54,7 +54,8 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, 
         this._load = function (id, deferred) {
             var scope = this;
 
-            $http.get('ourserver/books/' + id)
+            //$http.get('ourserver/books/' + id)
+            $http.get('http://localhost:8100/data/'+objName.toLowerCase()+'/'+id+'.json')
                 .success(function (data) {
                     var instance = scope._retrieveInstance(data.id, data);
                     deferred.resolve(instance);
@@ -80,7 +81,6 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', function ($http, $q, 
             //$http.get('ourserver/books')
             $http.get('http://localhost:8100/data/'+objName.toLowerCase()+'.json')
                 .success(function (results) {
-                    console.log(results);
                     var out = [];
                     results.forEach(function (data) {
                         var instance = scope._retrieveInstance(data.id, data);

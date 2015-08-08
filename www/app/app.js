@@ -7,6 +7,7 @@ angular.module('hushtag', [
     'hushtag.shared',
     'hushtag.core',
     'hushtag.events',
+    'hushtag.locations',
     'hushtag.hushtags'
 ])
 
@@ -65,7 +66,7 @@ angular.module('hushtag', [
             })
             .state('app.home.event', {
                 url: "/events/:event",
-                cache: false,
+                //cache: false,
                 views: {
                     'events': {
                         templateUrl: "app/events/event.info.html",
