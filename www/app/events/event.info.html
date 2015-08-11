@@ -18,7 +18,7 @@
 
             <div class="item pics">
                 <div class="row">
-                    <a ng-repeat="pic in event.pics | limitTo:2" class="col col-33" href="#">
+                    <a ng-repeat="pic in event.pics | limitTo:2" class="col col-33" href="#/app/home/pic/5">
                         <img ng-src="{{pic || 'img/200px.png'}}" style="max-width: 100%">
                     </a>
                     <div ng-show="event.pics.length>3" class="col col-33 display-flex">

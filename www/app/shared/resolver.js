@@ -4,9 +4,22 @@ sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', function 
         "Location": LocationsManager//,
         //TODO: add other managers
     };
-    this.loadRefs = function(obj) {
-        for (var i in obj.refs) {
-            ref = obj.refs[i];
+    this.loadRefs = function(obj, refs) {
+        if (refs != null){
+            var out = [];
+            for (var j in refs) {
+                for (var i in obj.refs) {
+                    if (obj.refs[i].attribute == refs[j]) {
+                        out.push(obj.refs[i]);
+                    }
+                }
+            }
+            refs = out;
+        } else {
+            refs = obj.refs;
+        }
+        for (i in refs) {
+            var ref = refs[i];
             if (ref.quantity == "one") {
                 this._resolveSingle(obj,ref);
             } else {

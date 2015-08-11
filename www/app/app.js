@@ -8,6 +8,7 @@ angular.module('hushtag', [
     'hushtag.core',
     'hushtag.events',
     'hushtag.locations',
+    'hushtag.pics',
     'hushtag.hushtags'
 ])
 
@@ -74,6 +75,18 @@ angular.module('hushtag', [
                     }
                 }
             })
+
+            .state('app.home.pic', {
+                url: "/pic/:pic",
+                //cache: false,
+                views: {
+                    'events': {
+                        templateUrl: "app/pics/pic.info.html",
+                        controller: 'PicInfoCtrl'
+                    }
+                }
+            })
+
 
             .state('app.home.hushtags', {
                 url: "/hushtags",
