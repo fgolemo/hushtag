@@ -5,9 +5,29 @@
 }
 
 .list .item .row, .list .item .row .col, .pics {
-    padding:0;
+    padding: 0;
 }
 
 .fat {
     font-weight: bold;
 }
+
+.centered {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.centered-auto {
+    margin: auto;
+}
+
+.full-sized {
+    width: 100%;
+    height: 100%;
+}
+
+.display-flex {
+    display: flex;
+}
+
