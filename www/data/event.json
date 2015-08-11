@@ -2,7 +2,7 @@
   {
     "id": "EVE1",
     "name": "Steve Aoki",
-    "pics": ["abc.png","def.png"],
+    "pics": ["/img/200px.png","img/200px2.png"],
     "description": "desc...",
     "comments": [],
     "tags": [],
@@ -17,7 +17,7 @@
   {
     "id": "EVE2",
     "name": "Melt Festival",
-    "pics": ["gh.png","ij.png"],
+    "pics": ["/img/200px.png","img/200px2.png","img/200px3.png"],
     "description": "desc...2",
     "comments": [],
     "tags": [],
@@ -32,7 +32,7 @@
   {
     "id": "EVE3",
     "name": "Fiesta Macumba",
-    "pics": ["kl.png","mn.png"],
+    "pics": ["img/200px.png","img/200px2.png","img/200px3.png","img/200px.png"],
     "description": "desc...3",
     "comments": [],
     "tags": [],

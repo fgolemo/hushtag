@@ -4,4 +4,10 @@
     color: #999;
 }
 
+.list .item .row, .list .item .row .col, .pics {
+    padding:0;
+}
 
+.fat {
+    font-weight: bold;
+}

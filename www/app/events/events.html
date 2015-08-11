@@ -5,35 +5,40 @@
             <a ng-repeat="event in events | orderBy:'start'"
                class="item item-thumbnail-left"
                href="#/app/home/events/{{event.id}}">
-               <!--ng-click="openModal()"-->
+                <!--ng-click="openModal()"-->
 
                 <img src="img/200px.png">
-                <h2>{{event.name}} (TODO: genre)</h2>
-                <time title="{{ event.start | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ event.start | amCalendar }}</time>
-                    <!--TODO: add end time-->
-                    <br>
-                    (TODO: location info)</p>
+
+                <h2><span class="fat">{{event.name}}</span> (TODO: genre)</h2>
+                <span class="">
+                    <time title="{{ event.start | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">
+                        {{ event.start | amCalendar }}
+                    </time>
+                </span>
+                <!--TODO: add end time-->
+                <br>
+                @ {{event.locationResolved.name}}</p>
             </a>
 
             <!--<a class="item item-thumbnail-left" href="#">-->
-                <!--<img src="img/200px.png">-->
-                <!--<h2>Fiesta Macumba (latin / dance)</h2>-->
-                <!--<p>tonight 23:00 <br>-->
-                    <!--Melkweg, Amsterdam, NL (12km)</p>-->
+            <!--<img src="img/200px.png">-->
+            <!--<h2>Fiesta Macumba (latin / dance)</h2>-->
+            <!--<p>tonight 23:00 <br>-->
+            <!--Melkweg, Amsterdam, NL (12km)</p>-->
             <!--</a>-->
 
             <!--<a class="item item-thumbnail-left" href="#">-->
-                <!--<img src="img/200px2.png">-->
-                <!--<h2>Steve Aoki (edm / dubstep)</h2>-->
-                <!--<p>tomorrow 22:00 <br>-->
-                    <!--Studio 80, Amsterdam, NL (9km)</p>-->
+            <!--<img src="img/200px2.png">-->
+            <!--<h2>Steve Aoki (edm / dubstep)</h2>-->
+            <!--<p>tomorrow 22:00 <br>-->
+            <!--Studio 80, Amsterdam, NL (9km)</p>-->
             <!--</a>-->
 
             <!--<a class="item item-thumbnail-left" href="#">-->
-                <!--<img src="img/200px3.png">-->
-                <!--<h2>Melt Festival (electro / house)</h2>-->
-                <!--<p>17-19/07/2015 <br>-->
-                    <!--Ferropolis, DE (342km)</p>-->
+            <!--<img src="img/200px3.png">-->
+            <!--<h2>Melt Festival (electro / house)</h2>-->
+            <!--<p>17-19/07/2015 <br>-->
+            <!--Ferropolis, DE (342km)</p>-->
             <!--</a>-->
 
 

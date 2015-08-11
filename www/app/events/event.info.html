@@ -16,11 +16,24 @@
                 {{starts_text}} {{ event.start | amCalendar }}
             </div>
 
-            <a class="item item-icon-left" href="#">
+            <div class="item pics">
+                <div class="row">
+                    <div ng-repeat="pic in event.pics | limitTo:2" class="col col-33">
+                        <img ng-src="{{pic || 'img/200px.png'}}" style="max-width: 100%">
+                    </div>
+                    <div ng-show="event.pics.length>3" class="col col-33">
+                        more than 3 pics, click here for more
+                    </div>
+                    <div ng-show="event.pics.length==3" class="col col-33">
+                        <img ng-src="{{pic || 'img/200px.png'}}" style="max-width: 100%">
+                    </div>
+                </div>
+            </div>
+
+            <div class="item item-icon-left">
                 <i class="icon ion-location"></i>
-                <!--{{event.loca()}}-->
-                {{event.locationResolved.name || "no location provided"}}
-            </a>
+                {{event.locationResolved.name || "no description provided"}}
+            </div>
 
             <div class="item item-icon-left">
                 <i class="icon ion-information"></i>
@@ -28,19 +41,19 @@
             </div>
 
 
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-mic-a"></i>
-                Record album
-                <span class="item-note">
-                  Grammy
-                </span>
-            </a>
+            <!--<a class="item item-icon-left" href="#">-->
+                <!--<i class="icon ion-mic-a"></i>-->
+                <!--Record album-->
+                <!--<span class="item-note">-->
+                  <!--Grammy-->
+                <!--</span>-->
+            <!--</a>-->
 
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-person-stalker"></i>
-                Friends
-                <span class="badge badge-assertive">0</span>
-            </a>
+            <!--<a class="item item-icon-left" href="#">-->
+                <!--<i class="icon ion-person-stalker"></i>-->
+                <!--Friends-->
+                <!--<span class="badge badge-assertive">0</span>-->
+            <!--</a>-->
 
         </div>
     </ion-content>
