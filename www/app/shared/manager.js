@@ -55,7 +55,7 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', 
             var scope = this;
 
             //$http.get('ourserver/books/' + id)
-            $http.get('http://localhost:8100/data/'+objName.toLowerCase()+'/'+id+'.json')
+            $http.get('/data/'+objName.toLowerCase()+'/'+id+'.json')
                 .success(function (data) {
                     var instance = scope._retrieveInstance(data.id, data);
                     deferred.resolve(instance);
@@ -79,7 +79,7 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', 
             var deferred = $q.defer();
             var scope = this;
             //$http.get('ourserver/books')
-            $http.get('http://localhost:8100/data/'+objName.toLowerCase()+'.json')
+            $http.get('/data/'+objName.toLowerCase()+'.json')
                 .success(function (results) {
                     var out = [];
                     results.forEach(function (data) {

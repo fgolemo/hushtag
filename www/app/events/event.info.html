@@ -17,17 +17,12 @@
             </div>
 
             <div class="item pics">
-                <div class="row">
-                    <a ng-repeat="pic in event.pics | limitTo:2" class="col col-33" href="#/app/home/pic/5">
-                        <img ng-src="{{pic || 'img/200px.png'}}" style="max-width: 100%">
-                    </a>
-                    <div ng-show="event.pics.length>3" class="col col-33 display-flex">
-                        <a href="#" class="centered-auto"><h2>& {{event.pics.length-2}} more</h2></a>
-                    </div>
-                    <div ng-show="event.pics.length==3" class="col col-33">
-                        <img ng-src="{{pic || 'img/200px.png'}}" style="max-width: 100%">
-                    </div>
-                </div>
+                <ion-scroll direction="x">
+                    <img ng-repeat="pic in event.pics"
+                         ng-src="{{pic}}"
+                         ng-click="showImages($index)"
+                         class="image-list-thumb"/>
+                </ion-scroll>
             </div>
 
             <div class="item item-icon-left">
