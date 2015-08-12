@@ -1,6 +1,6 @@
 [
   {
-    "id": "ABC1",
+    "id": "id1",
     "name": "Amphetamine",
     "family": [],
     "pics": ["abc.png","def.png"],
@@ -16,7 +16,7 @@
     "flags": []
   },
   {
-    "id": "ABC2",
+    "id": "id2",
     "name": "BBB",
     "family": [],
     "pics": ["abc2.png","def2.png"],
@@ -32,8 +32,8 @@
     "flags": []
   },
   {
-    "id": "ABC3",
-    "name": "ABC",
+    "id": "id3",
+    "name": "AAABB",
     "family": [],
     "pics": ["abc3.png","def3.png"],
     "dosages": "dosages...3",
