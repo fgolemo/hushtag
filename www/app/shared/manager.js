@@ -1,6 +1,7 @@
 sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', function ($http, $q, Hushtag, Event, Location) {
     return function (objName) {
-        this._objCreator = function(data){
+        var server = "http://quiet-sea-4655.herokuapp.com/"; //TODO: move this to a config file
+        this._objCreator = function (data) {
             switch (objName) {
                 case "Hushtag":
                     return new Hushtag(data);
@@ -31,7 +32,7 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', 
                 //    break;
                 default:
                     //TODO: handle error
-                    console.log("E: '"+objName+"' is not a valid object name in GenericManager")
+                    console.log("E: '" + objName + "' is not a valid object name in GenericManager")
                     break;
             }
         };
@@ -55,7 +56,7 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', 
             var scope = this;
 
             //$http.get('ourserver/books/' + id)
-            $http.get('/data/'+objName.toLowerCase()+'/'+id+'.json')
+            $http.get(server + objName.toLowerCase() + '/' + id)
                 .success(function (data) {
                     var instance = scope._retrieveInstance(data.id, data);
                     deferred.resolve(instance);
@@ -79,20 +80,21 @@ sharedModule.factory('Manager', ['$http', '$q', 'Hushtag', 'Event', 'Location', 
             var deferred = $q.defer();
             var scope = this;
             //$http.get('ourserver/books')
-            $http.get('/data/'+objName.toLowerCase()+'.json')
-                .success(function (results) {
+            $http.get(server + objName.toLowerCase() + 's') // 's' for plural... as in "get all of them"
+                .then(function (response) { // when response is available
                     var out = [];
-                    results.forEach(function (data) {
+                    response.data.forEach(function (data) {
                         var instance = scope._retrieveInstance(data.id, data);
                         out.push(instance);
                     });
-
                     deferred.resolve(out);
-                })
-                .error(function () {
-                    console.log("couldn't retrieve data for "+objName);
+                }, function (response) { // when there was an error
+                    console.log("couldn't retrieve data for " + objName);
+                    console.dir(response);
                     deferred.reject();
-                });
+                }
+            );
+
             return deferred.promise;
         };
         this.set = function (data) {
