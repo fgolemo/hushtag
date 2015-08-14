@@ -2,7 +2,7 @@ sharedModule.factory('Manager',
     ['$http', '$q', 'Hushtag', 'Event', 'Location', 'User', 'Settings',
         function ($http, $q, Hushtag, Event, Location, User, Settings) {
             return function (objName) {
-                var server = "http://quiet-sea-4655.herokuapp.com/"; //TODO: move this to a config file
+                var server = Settings.database;
                 this._objCreator = function (data) {
                     switch (objName) {
                         case "Hushtag":

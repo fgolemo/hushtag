@@ -6,4 +6,6 @@ sharedModule.service('Settings', [function () {
         maxWidth: 200,
         showDelay: 0
     };
+    //this.database = "http://quiet-sea-4655.herokuapp.com/"; //production
+    this.database = "http://localhost:5000/"; //test
 }]);
