@@ -9,10 +9,11 @@ angular.module('hushtag', [
     'hushtag.events',
     'hushtag.locations',
     'hushtag.pics',
+    'hushtag.users',
     'hushtag.hushtags'
 ])
 
-    .run(function ($ionicPlatform, amMoment) {
+    .run(function ($ionicPlatform, amMoment, $ionicLoading, Settings, $rootScope) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs
@@ -25,11 +26,31 @@ angular.module('hushtag', [
             }
         });
         amMoment.changeLocale('en-gb'); //TODO: this is very temporary and should be done automatically later on
+
+        $rootScope.$on('loading:show', function() {
+            $ionicLoading.show(Settings.loadingConf)
+        });
+
+        $rootScope.$on('loading:hide', function() {
+            $ionicLoading.hide()
+        });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
-        $stateProvider
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+        $httpProvider.interceptors.push(function($rootScope) {
+            return {
+                request: function(config) {
+                    $rootScope.$broadcast('loading:show');
+                    return config
+                },
+                response: function(response) {
+                    $rootScope.$broadcast('loading:hide');
+                    return response
+                }
+            }
+        });
 
+        $stateProvider
             .state('app', {
                 url: "/app",
                 abstract: true,
