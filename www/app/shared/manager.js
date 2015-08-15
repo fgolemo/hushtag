@@ -2,7 +2,7 @@ sharedModule.factory('Manager',
     ['$http', '$q', 'Hushtag', 'Event', 'Location', 'User', 'Settings',
         function ($http, $q, Hushtag, Event, Location, User, Settings) {
             return function (objName) {
-                var server = Settings.database;
+                this.server = Settings.database;
                 this._objCreator = function (data) {
                     switch (objName) {
                         case "Hushtag":
@@ -56,9 +56,7 @@ sharedModule.factory('Manager',
                 };
                 this._load = function (id, deferred) {
                     var scope = this;
-
-                    //$http.get('ourserver/books/' + id)
-                    $http.get(server + objName.toLowerCase() + '/' + id)
+                    $http.get(this.server + objName.toLowerCase() + '/' + id)
                         .success(function (data) {
                             var instance = scope._retrieveInstance(data.id, data);
                             deferred.resolve(instance);
@@ -81,8 +79,7 @@ sharedModule.factory('Manager',
                 this.loadAll = function () {
                     var deferred = $q.defer();
                     var scope = this;
-                    //$http.get('ourserver/books')
-                    $http.get(server + objName.toLowerCase() + 's') // 's' for plural... as in "get all of them"
+                    $http.get(this.server + objName.toLowerCase() + 's') // 's' for plural... as in "get all of them"
                         .then(function (response) { // when response is available
                             var out = [];
                             response.data.forEach(function (data) {

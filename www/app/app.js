@@ -132,7 +132,8 @@ angular.module('hushtag', [
                 url: "/profile",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/profile.html"
+                        templateUrl: "app/users/user.info.html",
+                        controller: 'UserInfoCtrl'
                     }
                 }
             })

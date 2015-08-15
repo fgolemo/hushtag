@@ -4,16 +4,20 @@ usersModule.factory('User', [function () {
             this.setData(data);
         }
     }
+
     User.prototype = {
-        id: "",         // unique identifier, either int (unlikely) or string.
-        name: "",       // username, string, not necessarily unique
-        description: "",// medium string, description of the event, can be multiline
-        pics: [],       // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
-        comments: [],   // list of IDs of comments on this entry, [88, 23, 189]
-        tags: [],       // list of IDs of tags on this entry, [77, 433, 182]
-        flags: [],      // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
-        refs: [
-        ],
+        id: "", // integer, identifier
+        name: "", // string, username, limit: 20 chars
+        password: "", // string, clear text password (never sent from the server)
+        password_hash: "", // string, hashed version of the password (for transmission)
+        avatar: "", // string, path tho the profile pic
+        //profile_text,
+        //realidentity
+        //banned_reason
+        created: "", // Date object
+        lastloggedin: "", // Date object
+        contact: "", // long string, optional for real people
+        refs: [],
 
         setData: function (data) {
             angular.extend(this, data);
@@ -23,6 +27,11 @@ usersModule.factory('User', [function () {
         },
         update: function () {
             //$http.put('ourserver/books/' + bookId, this);
+        },
+        becomeAnonymous: function () {
+            this.id = 0;
+            this.name = "Anoymous";
+            this.avatar = "/img/ht-logo-100px.png";
         }
     };
     return User;
