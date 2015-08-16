@@ -1,5 +1,5 @@
 usersModule
-    .controller('UserInfoCtrl', function ($scope, UsersManager, Login) {
+    .controller('UserInfoCtrl', function ($scope, UsersManager, Login, $ionicPopup) {
         //UsersManager.m.get(0).then(function (user) {
         //    $scope.anon = user;
         //});
@@ -14,7 +14,15 @@ usersModule
             };
         };
         $scope.sendLogin = function() {
-            Login.sendLogin(getData());
+            Login.sendLogin(getData(), function(badResponse) {
+                var alertPopup = $ionicPopup.alert({
+                    title: "That didn't work",
+                    template: badResponse
+                });
+                //alertPopup.then(function(res) {
+                //    console.log('Thank you for not eating my delicious ice cream cone');
+                //});
+            });
         };
         $scope.sendSignup = function() {
             Login.sendSignup(getData());
