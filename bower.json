@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.0.0"
   },
   "dependencies": {
-    "jshashes": "~1.0.5"
+    "jshashes": "~1.0.5",
+    "angular-post-fix": "~0.1.0"
   }
 }

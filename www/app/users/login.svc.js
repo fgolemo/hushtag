@@ -4,6 +4,10 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         return !!this.user;
     };
     this.sendLogin = function(data) {
+        console.log("doing login at");
+        console.log(Settings.database + "login");
+        console.dir(data);
+        console.log("---");
         $http.post(Settings.database + "login", data)
             .then(function (response) { // when response is available
                 console.log("got positive login response:");

@@ -1,6 +1,7 @@
 angular.module('hushtag', [
     'ionic',
     //'ui.bootstrap',
+    'httpPostFix',
     'angularMoment',
     'hushtag.services',
     'hushtag.controllers',
