@@ -1,27 +1,32 @@
 <ion-view view-title="Profile">
     <ion-content class="padding">
-        <h1 ng-show="!login.isLoggedIn()">Log in / Sign up</h1>
-        <h3 ng-show="!login.isLoggedIn()">(if you want to gain rep)</h3>
-        <br>
-        <form ng-submit="sendLogin()" ng-show="user == null">
-            <div class="list">
-                <label class="item item-input">
-                    <span class="input-label">Username</span>
-                    <input type="text" ng-model="loginData.username">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Password</span>
-                    <input type="password" ng-model="loginData.password">
-                </label>
-                <button class="button button-block button-energized" type="submit">Log in</button>
-                <button class="button button-block button-royal" ng-click="sendSignup()">Sign up</button>
-            </div>
-        </form>
-        <!--TODO: add "create user" button-->
+        <div ng-show="!login.isLoggedIn()">
+            <h1>Log in / Sign up</h1>
 
-        <h1 ng-show="login.isLoggedIn()">Profile</h1>
-        <pre ng-show="login.isLoggedIn()">
-            {{user|json}}
+            <h3>(if you want to gain rep)</h3>
+            <br>
+
+            <form ng-submit="sendLogin()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Username</span>
+                        <input type="text" ng-model="loginData.username">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="loginData.password">
+                    </label>
+                    <button class="button button-block button-energized" type="submit">Log in</button>
+                    <button class="button button-block button-royal" ng-click="sendSignup()">Sign up</button>
+                </div>
+            </form>
+        </div>
+
+        <div ng-show="login.isLoggedIn()">
+            <h1>Profile</h1>
+        <pre>
+            {{login.user|json}}
         </pre>
+        </div>
     </ion-content>
 </ion-view>

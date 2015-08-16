@@ -4,14 +4,15 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         return !!this.user;
     };
     this.sendLogin = function(data) {
-        console.log("doing login at");
-        console.log(Settings.database + "login");
-        console.dir(data);
-        console.log("---");
+        var self = this;
         $http.post(Settings.database + "login", data)
             .then(function (response) { // when response is available
-                console.log("got positive login response:");
-                console.dir(response);
+                if (response.data.status && response.data.status == "success") {
+                    self.user = response.data.obj;
+                    //TODO: store credentials for later
+                } else {
+                    console.dir(response.data);
+                }
             }, function (response) { // when there was an error
                 console.log("couldn't log in with data:");
                 console.dir(data);
