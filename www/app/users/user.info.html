@@ -26,10 +26,21 @@
         </div>
 
         <div ng-show="login.isLoggedIn()">
-            <h1>Profile</h1>
-        <pre>
-            {{login.user|json}}
-        </pre>
+            <div class="list card">
+                <div class="item item-avatar">
+                    <img ng-src="{{login.getUserAvatar()}}">
+                    <h2>{{login.user.name}}</h2>
+                    <p>member since: {{login.user.created | amCalendar}}</p>
+                </div>
+
+                <div class="item item-body">
+                    <p>
+                        TODO: insert user info here
+                    </p>
+                </div>
+
+
+            </div>
         </div>
     </ion-content>
 </ion-view>

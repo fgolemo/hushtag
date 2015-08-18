@@ -26,7 +26,7 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         } else {
             //TODO: can this ever happen? If not remove block
         }
-    }
+    };
 
     this.sendSignup = function (data, errorCB) {
         var self = this;
@@ -44,7 +44,15 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
 
     this.logout = function() {
         this.user = null;
-    }
+    };
+
+    this.getUserAvatar = function() {
+        if (this.user && this.user.avatar) {
+            return this.user.avatar;
+        } else {
+            return Settings.defaultAvatar;
+        }
+    };
 
     //TODO: handle signup
 }]);
