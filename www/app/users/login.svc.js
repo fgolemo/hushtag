@@ -1,4 +1,4 @@
-usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User, Settings) {
+usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', function ($http, User, Settings, Localstorage) {
     this.user = null;
     this.isLoggedIn = function () {
         return !!this.user;
@@ -6,8 +6,8 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
     this.sendLogin = function (data, errorCB) {
         var self = this;
         $http.post(Settings.database + "login", data)
-            .then(function(response) {
-                self.responseHandler(response, errorCB);
+            .then(function (response) {
+                self.responseHandler(response, errorCB, data);
             }, function (response) { // when there was an error
                 console.log("couldn't log in with data:");
                 console.dir(data);
@@ -17,9 +17,10 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         );
     };
 
-    this.responseHandler = function(response, errorCB) {
+    this.responseHandler = function (response, errorCB, data) {
         if (response.data.status && response.data.status == "success") {
             this.user = response.data.obj;
+            Localstorage.setObject('user', data);
             //TODO: store credentials for later
         } else if (response.data.status && response.data.status == "fail") {
             errorCB(response.data.msg);
@@ -31,8 +32,8 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
     this.sendSignup = function (data, errorCB) {
         var self = this;
         $http.post(Settings.database + "signup", data)
-            .then(function(response) {
-                self.responseHandler(response, errorCB);
+            .then(function (response) {
+                self.responseHandler(response, errorCB, data);
             }, function (response) { // when there was an error
                 console.log("couldn't sign up with data:");
                 console.dir(data);
@@ -42,11 +43,12 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         );
     };
 
-    this.logout = function() {
+    this.logout = function () {
         this.user = null;
+        Localstorage.remove('user');
     };
 
-    this.getUserAvatar = function() {
+    this.getUserAvatar = function () {
         if (this.user && this.user.avatar) {
             return this.user.avatar;
         } else {
@@ -54,5 +56,11 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         }
     };
 
-    //TODO: handle signup
+    var storedAuth = Localstorage.getObject('user');
+    if (JSON.stringify(storedAuth) != '{}') {
+        this.sendLogin(storedAuth, function (error) {
+            console.log("ERROR: problem with auto login: " + error);
+        });
+    }
+
 }]);
