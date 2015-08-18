@@ -42,5 +42,9 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         );
     };
 
+    this.logout = function() {
+        this.user = null;
+    }
+
     //TODO: handle signup
 }]);
