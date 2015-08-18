@@ -6,15 +6,8 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
     this.sendLogin = function (data, errorCB) {
         var self = this;
         $http.post(Settings.database + "login", data)
-            .then(function (response) { // when response is available
-                if (response.data.status && response.data.status == "success") {
-                    self.user = response.data.obj;
-                    //TODO: store credentials for later
-                } else if (response.data.status && response.data.status == "fail") {
-                    errorCB(response.data.msg);
-                } else {
-                    //TODO: can this ever happen? If not remove block
-                }
+            .then(function(response) {
+                self.responseHandler(response, errorCB);
             }, function (response) { // when there was an error
                 console.log("couldn't log in with data:");
                 console.dir(data);
@@ -24,11 +17,22 @@ usersModule.service('Login', ['$http', 'User', 'Settings', function ($http, User
         );
     };
 
-    this.sendSignup = function (data) {
+    this.responseHandler = function(response, errorCB) {
+        if (response.data.status && response.data.status == "success") {
+            this.user = response.data.obj;
+            //TODO: store credentials for later
+        } else if (response.data.status && response.data.status == "fail") {
+            errorCB(response.data.msg);
+        } else {
+            //TODO: can this ever happen? If not remove block
+        }
+    }
+
+    this.sendSignup = function (data, errorCB) {
+        var self = this;
         $http.post(Settings.database + "signup", data)
-            .then(function (response) { // when response is available
-                console.log("got positive signup response:");
-                console.dir(response);
+            .then(function(response) {
+                self.responseHandler(response, errorCB);
             }, function (response) { // when there was an error
                 console.log("couldn't sign up with data:");
                 console.dir(data);

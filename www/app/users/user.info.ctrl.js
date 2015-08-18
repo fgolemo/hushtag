@@ -13,19 +13,19 @@ usersModule
                 hash: SHA256.hex($scope.loginData.password)
             };
         };
-        $scope.sendLogin = function() {
-            Login.sendLogin(getData(), function(badResponse) {
-                var alertPopup = $ionicPopup.alert({
-                    title: "That didn't work",
-                    template: badResponse
-                });
-                //alertPopup.then(function(res) {
-                //    console.log('Thank you for not eating my delicious ice cream cone');
-                //});
+
+        var badLoginPopup = function(badResponse) {
+            var alertPopup = $ionicPopup.alert({
+                title: "That didn't work",
+                template: badResponse
             });
         };
+
+        $scope.sendLogin = function() {
+            Login.sendLogin(getData(), badLoginPopup);
+        };
         $scope.sendSignup = function() {
-            Login.sendSignup(getData());
+            Login.sendSignup(getData(), badLoginPopup);
         };
     })
 ;
