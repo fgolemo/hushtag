@@ -19,7 +19,7 @@ sharedModule.directive('buttonHide', function ($rootScope, Login, Settings) {
                                 repID = 2;
                                 break;
                         }
-                        if (Login.user.rep[repID] >= Settings.rep.editOwn) {
+                        if (Login.user.rep[repID] >= Settings.rep.create) {
                             $element.removeClass('hide');
                         } else {
                             $element.addClass('hide');

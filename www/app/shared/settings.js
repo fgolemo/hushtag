@@ -10,7 +10,7 @@ sharedModule.service('Settings', [function () {
     this.database = "http://localhost:5000/"; //test
     this.defaultAvatar = "/img/ht-logo-100px.png";
     this.rep = {
-        editOwn: 20,
-        editAll: 100
+        create: 20,
+        edit: 100
     }
 }]);

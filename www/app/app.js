@@ -108,6 +108,16 @@ angular.module('hushtag', [
                     }
                 }
             })
+            .state('app.home.eventedit', {
+                url: "/events/:event/edit",
+                //cache: false,
+                views: {
+                    'events': {
+                        templateUrl: "app/events/event.edit.html",
+                        controller: 'EventEditCtrl'
+                    }
+                }
+            })
 
             .state('app.home.pic', {
                 url: "/pic/:pic",

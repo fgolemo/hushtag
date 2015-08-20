@@ -1,5 +1,5 @@
 eventsModule
-    .controller('EventInfoCtrl', function ($scope, EventsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate) {
+    .controller('EventInfoCtrl', function ($scope, EventsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate, Login, Settings) {
         var eventID = $stateParams.event;
         EventsManager.m.get(eventID).then(function(event) {
             //Resolver.loadRefs(event);
@@ -14,6 +14,9 @@ eventsModule
         $scope.showImages = function(index) {
             $scope.activeSlide = index;
             $scope.modal.show();
+        };
+        $scope.canEdit = function() {
+            return ($scope.event.organizer == Login.user.id || Login.user.rep[0] >= Settings.rep.edit);
         };
     })
 ;
