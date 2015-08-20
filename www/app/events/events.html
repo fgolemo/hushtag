@@ -2,7 +2,7 @@
     <ion-nav-buttons side="secondary">
         <div class="buttons buttons-right header-item">
             <span class="right-buttons">
-                <button class="button button-energized button-fab" go-click="/app/home/events/create">
+                <button class="button button-energized button-fab" go-click="/app/home/events/create" ng-show="login.user.rep[0]>=20">
                     <i class="icon ion-plus"></i>
                 </button>
             </span>
