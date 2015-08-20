@@ -24,7 +24,7 @@
 
         <div ng-show="login.isLoggedIn()">
             <div class="list">
-                <div class="item item-thumbnail-left">
+                <div class="item item-avatar">
                     <img ng-src="{{login.getUserAvatar()}}">
                     <h2>{{login.user.name}}</h2>
                     <p>member since: {{login.user.created | amCalendar}}</p>
