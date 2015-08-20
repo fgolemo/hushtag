@@ -1,13 +1,10 @@
 <ion-view view-title="Events" hide-back-button="false">
-    <ion-nav-buttons side="secondary">
-        <div class="buttons buttons-right header-item">
-            <span class="right-buttons">
-                <button class="button button-energized button-fab" go-click="/app/home/events/create" ng-show="login.user.rep[0]>=20">
-                    <i class="icon ion-plus"></i>
-                </button>
-            </span>
-        </div>
-    </ion-nav-buttons>
+    <button
+            class="button button-energized button-fab button-fab-bottom-right hide"
+            go-click="/app/home/events/create"
+            button-hide="events">
+        <i class="icon ion-plus"></i>
+    </button>
     <ion-content class="padding">
         <div class="list">
 

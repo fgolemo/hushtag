@@ -94,3 +94,7 @@
 .list .item-thumbnail-left, .list .item-thumbnail-left .item-content {
     min-height: 100px;
 }
+
+.hide {
+    display: none !important;
+}
