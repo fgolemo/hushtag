@@ -16,7 +16,9 @@ eventsModule
             $scope.modal.show();
         };
         $scope.canEdit = function() {
-            return ($scope.event.organizer == Login.user.id || Login.user.rep[0] >= Settings.rep.edit);
+            return (Login.isLoggedIn() &&
+                ($scope.event.organizer == Login.user.id ||
+                Login.user.rep[0] >= Settings.rep.edit));
         };
     })
 ;
