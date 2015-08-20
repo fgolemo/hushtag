@@ -1,5 +1,5 @@
 usersModule
-    .controller('UserInfoCtrl', function ($scope, UsersManager, Login, $ionicPopup) {
+    .controller('UserInfoCtrl', function ($scope, UsersManager, Login, $ionicPopup, $ionicScrollDelegate) {
         //UsersManager.m.get(0).then(function (user) {
         //    $scope.anon = user;
         //});
@@ -26,6 +26,9 @@ usersModule
         };
         $scope.sendSignup = function() {
             Login.sendSignup(getData(), badLoginPopup);
+        };
+        $scope.scrollTop = function() {
+            $ionicScrollDelegate.scrollTop();
         };
     })
 ;

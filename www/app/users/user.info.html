@@ -1,8 +1,5 @@
 <ion-view view-title="Profile">
-    <ion-nav-buttons side="secondary">
-        <button class="button" ng-show="login.isLoggedIn()" ng-click="login.logout()">Logout</button>
-    </ion-nav-buttons>
-    <ion-content class="padding">
+    <ion-content>
         <div ng-show="!login.isLoggedIn()">
             <h1>Log in / Sign up</h1>
 
@@ -19,21 +16,24 @@
                         <span class="input-label">Password</span>
                         <input type="password" ng-model="loginData.password">
                     </label>
-                    <button class="button button-block button-energized" type="submit">Log in</button>
-                    <button class="button button-block button-royal" type="button" ng-click="sendSignup()">Sign up</button>
+                    <div class="item">
+                        <button class="button button-energized" type="submit">Log in</button>
+                        <button class="button button-royal" type="button" ng-click="sendSignup()">Sign up</button>
+                    </div>
+
                 </div>
             </form>
         </div>
 
         <div ng-show="login.isLoggedIn()">
-            <div class="list card">
-                <div class="item item-avatar">
+            <div class="list">
+                <div class="item item-thumbnail-left">
                     <img ng-src="{{login.getUserAvatar()}}">
                     <h2>{{login.user.name}}</h2>
                     <p>member since: {{login.user.created | amCalendar}}</p>
                 </div>
 
-                <div class="item item-body">
+                <div class="item">
                     <p>
                         TODO: insert user info here
                         <br>
@@ -43,64 +43,76 @@
             </div>
             <h4 class="rep">Rep</h4>
             <div class="list">
-                <div class="item item-divider fat">
+                <div class="item item-divider">
                     Events ({{login.user.rep[0]}} points)
                 </div>
-                <div class="item item-icon-right">
-                    view/comment/rate
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark"></i>
+                    view/comment/rate
+                    <span class="badge badge-royal">free</span>
                 </div>
-                <div class="item" ng-class="{'item-icon-right': login.user.rep[0]>=20}">
-                    create/edit own
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark" ng-show="login.user.rep[0]>=20"></i>
+                    create/edit own
+                    <span class="badge badge-royal">20p</span>
                 </div>
-                <div class="item" ng-class="{'item-icon-right': login.user.rep[0]>=100}">
-                    edit all
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark" ng-show="login.user.rep[0]>=100"></i>
+                    edit all
+                    <span class="badge badge-royal">100p</span>
                 </div>
                 <!--<div class="item">-->
                     <!--Delete all events-->
                 <!--</div>-->
 
-                <div class="item item-divider fat">
+                <div class="item item-divider">
                     Hushtags ({{login.user.rep[1]}} points)
                 </div>
-                <div class="item item-icon-right">
-                    view/comment/rate
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark"></i>
+                    view/comment/rate
+                    <span class="badge badge-royal">free</span>
                 </div>
-                <div class="item" ng-class="{'item-icon-right': login.user.rep[1]>=20}">
-                    create/edit own
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark" ng-show="login.user.rep[1]>=20"></i>
+                    create/edit own
+                    <span class="badge badge-royal">20p</span>
                 </div>
-                <div class="item" ng-class="{'item-icon-right': login.user.rep[1]>=100}">
-                    edit all
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark" ng-show="login.user.rep[1]>=100"></i>
+                    edit all
+                    <span class="badge badge-royal">100p</span>
                 </div>
                 <!--<div class="item">-->
                     <!--Delete all hushtags-->
                 <!--</div>-->
 
-                <div class="item item-divider fat">
+                <div class="item item-divider">
                     Locations ({{login.user.rep[2]}} points)
                 </div>
-                <div class="item item-icon-right">
-                    view/comment/rate
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark"></i>
+                    view/comment/rate
+                    <span class="badge badge-royal">free</span>
                 </div>
-                <div class="item" ng-class="{'item-icon-right': login.user.rep[2]>=20}">
-                    create/edit own
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark" ng-show="login.user.rep[2]>=20"></i>
+                    create/edit own
+                    <span class="badge badge-royal">20p</span>
                 </div>
-                <div class="item" ng-class="{'item-icon-right': login.user.rep[2]>=100}">
-                    edit all
+                <div class="item item-icon-left">
                     <i class="icon ion-checkmark" ng-show="login.user.rep[2]>=100"></i>
+                    edit all
+                    <span class="badge badge-royal">100p</span>
                 </div>
                 <!--<div class="item">-->
                     <!--Delete all hushtags-->
                 <!--</div>-->
 
             </div>
+            <button class="button button-block button-stable" ng-click="login.logout();scrollTop()">
+                Logout
+            </button>
         </div>
     </ion-content>
 </ion-view>

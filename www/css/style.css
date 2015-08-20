@@ -31,7 +31,6 @@
     display: flex;
 }
 
-
 .image-modal {
     width: 100% !important;
     height: 100%;
@@ -65,11 +64,10 @@
     height: 100px;
 }
 
-
 .centerme {
     margin: 0 auto;
     width: 100%;
-    height:100%;
+    height: 100%;
 }
 
 .fullscreen-player {
@@ -87,4 +85,12 @@
 .rep {
     text-align: center;
     padding-top: 10px;
+}
+
+/*.list .item-divider {*/
+/*color: #222222;*/
+/*}*/
+
+.list .item-thumbnail-left, .list .item-thumbnail-left .item-content {
+    min-height: 100px;
 }

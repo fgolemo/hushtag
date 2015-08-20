@@ -11,7 +11,8 @@ angular.module('hushtag', [
     'hushtag.locations',
     'hushtag.pics',
     'hushtag.users',
-    'hushtag.hushtags'
+    'hushtag.hushtags',
+    'ionic-material'
 ])
 
     .run(function ($ionicPlatform, amMoment, $ionicLoading, Settings, $rootScope) {
