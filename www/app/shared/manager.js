@@ -1,6 +1,6 @@
 sharedModule.factory('Manager',
-    ['$http', '$q', 'Hushtag', 'Event', 'Location', 'User', 'Settings',
-        function ($http, $q, Hushtag, Event, Location, User, Settings) {
+    ['$http', '$q', 'Hushtag', 'Event', 'Location', 'User', 'Settings', 'Login',
+        function ($http, $q, Hushtag, Event, Location, User, Settings, Login) {
             return function (objName) {
                 this.server = Settings.database;
                 this._objCreator = function (data) {
@@ -105,6 +105,31 @@ sharedModule.factory('Manager',
                         instance = scope._retrieveInstance(data);
                     }
                     return instance;
+                };
+                this.update = function (data) {
+                    var deferred = $q.defer();
+                    var userToken = Login.getUserToken();
+                    if (!userToken) {
+                        console.log("ERROR: usertoken not found");
+                        deferred.reject();
+                    }
+                    var scope = this;
+                    var instance = this._search(data.id);
+                    if (instance) {
+                        instance.pack();
+                        var url = this.server + objName.toLowerCase() + '/' + data.id;
+                        var obj = {obj:instance, ut:userToken};
+                        $http.put(url, obj)
+                            .then(function (response) { // when response is available
+                                deferred.resolve(response.data);
+                            }, function (response) { // when there was an error
+                                console.log("couldn't put data for " + objName);
+                                console.dir(response);
+                                deferred.reject();
+                            }
+                        );
+                    }
+                    return deferred.promise;
                 };
 
             };

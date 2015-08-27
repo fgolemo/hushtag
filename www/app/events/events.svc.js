@@ -1,7 +1,8 @@
-eventsModule.factory('Event', [function () {
+eventsModule.factory('Event', ["moment", function (moment) {
     function Event(data) {
         if (data) {
             this.setData(data);
+            this.unpack();
         }
     }
     Event.prototype = {
@@ -31,24 +32,25 @@ eventsModule.factory('Event', [function () {
 
         setData: function (data) {
             angular.extend(this, data);
+            this.unpack();
         },
-        delete: function () {
-            //$http.delete('ourserver/books/' + bookId);
+        unpack: function () {
+            this.start = moment(this.start);
+            this.hasEnd = false;
+            if (this.end != null && this.end != "null") {
+                this.end = moment(this.end);
+                this.endDate = this.end.toDate();
+                this.hasEnd = true;
+            }
+            this.startDate = this.start.toDate();
         },
-        update: function () {
-            //$http.put('ourserver/books/' + bookId, this);
+        pack: function () {
+            this.start = moment(this.startDate).format();
+            this.end = moment(this.endDate).format();
+            if (!this.hasEnd) {
+                this.end = null;
+            }
         }
-        //getImageUrl: function(width, height) {
-        //    return 'our/image/service/' + this.book.id + '/width/height';
-        //},
-        //isAvailable: function() {
-        //    if (!this.book.stores || this.book.stores.length === 0) {
-        //        return false;
-        //    }
-        //    return this.book.stores.some(function(store) {
-        //        return store.quantity > 0;
-        //    });
-        //}
     };
     return Event;
 }]);

@@ -80,6 +80,16 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
         console.dir(response);
     };
 
+    this.getUserToken = function() {
+        if (!this.isLoggedIn()) {
+            return false;
+        }
+        return {
+            user: this.user.id,
+            token: this.user.token
+        }
+    };
+
     var storedAuth = Localstorage.getObject('user');
     if (JSON.stringify(storedAuth) != '{}') {
         this.sendLogin(storedAuth, function (error) {
