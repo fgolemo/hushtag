@@ -1,6 +1,6 @@
 sharedModule.factory('Manager',
-    ['$http', '$q', 'Hushtag', 'Event', 'Location', 'User', 'Settings', 'Login',
-        function ($http, $q, Hushtag, Event, Location, User, Settings, Login) {
+    ['$http', '$q', 'Hushtag', 'Event', 'Location', 'User', 'Settings', 'Login', 'Comment',
+        function ($http, $q, Hushtag, Event, Location, User, Settings, Login, Comment) {
             return function (objName) {
                 this.server = Settings.database;
                 this._objCreator = function (data) {
@@ -11,9 +11,9 @@ sharedModule.factory('Manager',
                         //case "HushtagUse":
                         //    return new Hushtag(data);
                         //    break;
-                        //case "Comment":
-                        //    return new Comment(data);
-                        //    break;
+                        case "Comment":
+                            return new Comment(data);
+                            break;
                         //case "Tag":
                         //    return new Tag(data);
                         //    break;

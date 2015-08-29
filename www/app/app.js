@@ -12,6 +12,7 @@ angular.module('hushtag', [
     'hushtag.locations',
     'hushtag.pics',
     'hushtag.users',
+    'hushtag.comments',
     'hushtag.hushtags',
     'ionic-material'
 ])
