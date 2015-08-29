@@ -1,12 +1,11 @@
 {
-  "name": "HelloIonic",
-  "private": "true",
+  "name": "Hushtag",
+  "private": "false",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.0.0"
   },
   "dependencies": {
     "jshashes": "~1.0.5",
-    "angular-post-fix": "~0.1.0",
     "ionic-material": "~0.4.2",
     "robotodraft": "~1.1.0"
   }
