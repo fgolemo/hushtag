@@ -98,3 +98,5 @@
 .hide {
     display: none !important;
 }
+
+textarea.elastic {resize: none;}

@@ -3,6 +3,7 @@ angular.module('hushtag', [
     //'ui.bootstrap',
     'hushtag.shared.httpPostFix',
     'angularMoment',
+    'monospaced.elastic',
     'hushtag.services',
     'hushtag.controllers',
     'hushtag.shared',
