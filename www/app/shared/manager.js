@@ -65,6 +65,17 @@ sharedModule.factory('Manager',
                             deferred.reject();
                         });
                 };
+                this._loadSync = function (id, cb) {
+                    var scope = this;
+                    $http.get(this.server + objName.toLowerCase() + '/' + id)
+                        .success(function (data) {
+                            var instance = scope._retrieveInstance(data.id, data);
+                            cb(instance);
+                        })
+                        .error(function () {
+                            cb(null);
+                        });
+                };
                 /* Public Methods */
                 this.get = function (id) {
                     var deferred = $q.defer();
@@ -73,6 +84,36 @@ sharedModule.factory('Manager',
                         deferred.resolve(instance);
                     } else {
                         this._load(id, deferred);
+                    }
+                    return deferred.promise;
+                };
+                this.getAll = function (ids) {
+                    var deferred = $q.defer();
+                    var out = [];
+                    var counterResolved = 0;
+                    var counterTotal = ids.length;
+                    for (var i in ids) {
+                        var id = ids[i];
+                        var instance = this._search(id);
+                        if (instance) {
+                            if (instance != null) {
+                                out.push(instance);
+                            }
+                            counterResolved += 1;
+                            if (counterResolved == counterTotal) {
+                                deferred.resolve(out);
+                            }
+                        } else {
+                            this._loadSync(id, function(instance) {
+                                if (instance != null) {
+                                    out.push(instance);
+                                }
+                                counterResolved += 1;
+                                if (counterResolved == counterTotal) {
+                                    deferred.resolve(out);
+                                }
+                            });
+                        }
                     }
                     return deferred.promise;
                 };

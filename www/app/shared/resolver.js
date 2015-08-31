@@ -1,7 +1,8 @@
-sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', function (EventsManager, LocationsManager) {
+sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'CommentsManager', function (EventsManager, LocationsManager, CommentsManager) {
     this._managers = {
         "Event": EventsManager,
-        "Location": LocationsManager//,
+        "Location": LocationsManager,
+        "Comment": CommentsManager
         //TODO: add other managers
     };
     this.loadRefs = function(obj, refs) {
@@ -34,6 +35,8 @@ sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', function 
         });
     };
     this._resolveMulti = function(obj, ref) {
-        //TODO: implement
+        this._managers[ref.type].m.getAll(obj[ref.attribute]).then(function(result) {
+            obj[ref.attribute+"Resolved"] = result;
+        });
     };
 }]);

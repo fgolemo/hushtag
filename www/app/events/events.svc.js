@@ -27,6 +27,11 @@ eventsModule.factory('Event', ["moment", function (moment) {
                 attribute: "location",
                 type: "Location",
                 quantity: "one"
+            },
+            {
+                attribute: "comments",
+                type: "Comment",
+                quantity: "many"
             }
         ],
 
