@@ -7,7 +7,7 @@
     </button>
     <ion-content class="padding">
         <div class="list">
-
+            <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
             <a ng-repeat="event in events | orderBy:'start'"
                class="item item-thumbnail-left"
                href="#/app/home/events/{{event.id}}">

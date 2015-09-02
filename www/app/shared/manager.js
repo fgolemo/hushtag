@@ -117,7 +117,8 @@ sharedModule.factory('Manager',
                     }
                     return deferred.promise;
                 };
-                this.loadAll = function () {
+                this.loadAll = function (force) {
+                    //TODO: add caching here - if !force load from cache
                     var deferred = $q.defer();
                     var scope = this;
                     $http.get(this.server + objName.toLowerCase() + 's') // 's' for plural... as in "get all of them"

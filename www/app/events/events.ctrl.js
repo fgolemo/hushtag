@@ -3,13 +3,23 @@ eventsModule
     ["$scope", "EventsManager", "Resolver", "Login",
         function ($scope, EventsManager, Resolver, Login) {
             $scope.login = Login;
-            EventsManager.m.loadAll().then(function (events) {
-                for (var i in events) {
-                    Resolver.loadRefs(events[i], ["location"]);
-                }
-                $scope.events = events;
-            });
-
+            var loadData = function(force, cb) {
+                EventsManager.m.loadAll(force).then(function (events) {
+                    for (var i in events) {
+                        Resolver.loadRefs(events[i], ["location"]);
+                    }
+                    $scope.events = events;
+                    if (cb) {
+                        cb();
+                    }
+                });
+            };
+            loadData(false);
+            $scope.doRefresh = function() {
+                loadData(true, function() {
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+            }
         }
     ]
 );
