@@ -10,11 +10,10 @@ votesModule.directive('voteInfo', ['Votes', function (Votes) {
                 if (hasVotedChecker != null) {
                     hasVotedChecker.then(function (response) {
                         var r = response.data;
-                        console.dir(r);
                         if (r.status && r.status == "success" && r.reply) {
-                            console.log("yeah, has voted");
+                            scope.obj.hasVoted = true;
                         } else {
-                            console.log("hasn't voted or error");
+                            scope.obj.hasVoted = false;
                         }
                     });
                 }
