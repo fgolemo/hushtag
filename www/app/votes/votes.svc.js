@@ -6,7 +6,7 @@ votesModule.service('Votes', ['$q', 'Login', 'Settings', '$http',
             }
             var deferred = $q.defer();
             var self = this;
-            var postData = this._createPost(type, id, false);
+            var postData = this._createPost(type, id);
             $http.post(Settings.database + 'votes/hasVoted', postData)
                 .then(function (response) { // when response is available
                     //TODO: implement
@@ -24,16 +24,13 @@ votesModule.service('Votes', ['$q', 'Login', 'Settings', '$http',
             return deferred.promise;
         };
 
-        this._createPost = function (type, id, auth) {
-            var out = {
+        this._createPost = function (type, id) {
+            return {
                 obj: {
                     type: type,
                     id: id
-                }
+                },
+                ut: Login.getUserToken()
             };
-            if (auth) {
-                out.ut = Login.getUserToken();
-            }
-            return out;
         };
     }]);
