@@ -6,7 +6,11 @@ eventsModule
                 Resolver.loadRefs(event, null, true);
                 $scope.event = event;
                 $scope.starts_text = ( moment(event.start) < moment(new Date()) ) ? "started" : "starts";
-                $scope.$broadcast("objLoaded");
+                console.log("CON: preparing to broadcast");
+                $scope.$on("voterReady", function() {
+                    console.log(" CON: broadcasting that I loaded event:"+event.id);
+                    $scope.$broadcast("objLoaded");
+                });
                 if (cb) {
                     cb();
                 }

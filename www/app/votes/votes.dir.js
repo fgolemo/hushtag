@@ -4,8 +4,10 @@ votesModule.directive('voteInfo', ['Votes', function (Votes) {
         replace: 'true',
         templateUrl: 'app/votes/votes.dir.html',
         link: function (scope, elem, attrs) {
+            console.log("DIR: setting up reception of events");
             scope.$on("objLoaded", function () {
                 scope.obj = scope[attrs.on];
+                console.log("received notification for object loaded:"+scope.obj.id);
                 var hasVotedChecker = Votes.hasVoted(attrs.on, scope.obj.id);
                 if (hasVotedChecker != null) {
                     hasVotedChecker.then(function () {
@@ -14,6 +16,8 @@ votesModule.directive('voteInfo', ['Votes', function (Votes) {
                     });
                 }
             });
+            console.log("DIR: sending the ready for events");
+            scope.$emit("voterReady");
         }
     };
 }]);

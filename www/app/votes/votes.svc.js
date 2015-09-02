@@ -12,7 +12,7 @@ votesModule.service('Votes', ['$q', 'Login', 'Settings', '$http',
                     //TODO: implement
                     console.log("got hasVoted response");
                     console.dir(response);
-                    deferred.resolve(out);
+                    deferred.resolve(response);
                 }, function (response) { // when there was an error
                     //TODO: implement
                     console.log("couldn't retrieve hasVoted for: ");
