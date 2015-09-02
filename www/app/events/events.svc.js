@@ -22,6 +22,9 @@ eventsModule.factory('Event', ["moment", function (moment) {
         comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
+        upvotes: 0,   // integer of upvotes
+        downvotes: 0,   // integer of downvotes
+        hasVoted: false,// boolean, indicator if the user himself has voted
         refs: [
             {
                 attribute: "location",

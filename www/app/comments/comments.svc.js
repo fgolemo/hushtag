@@ -9,7 +9,8 @@ commentsModule.factory('Comment', ["moment", function (moment) {
         id: "",     // unique identifier, either int (unlikely) or string.
         content: "",    // long string, actual content of the comment
         created: new Date(), // date obj of creation of the comment
-        votes: [],      // integer of votes
+        upvotes: 0,   // integer of upvotes
+        downvotes: 0,   // integer of downvotes
         hasVoted: false,// boolean, indicator if the user himself has voted
         owner: "",      // user ID
         //pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]

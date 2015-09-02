@@ -8,9 +8,10 @@
             ng-show="canEdit()">
     </button>
     <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+        </ion-refresher>
+        <h3>{{event.name}}</h3>
         <div class="list">
-            <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
-            </ion-refresher>
             <div class="item item-icon-left">
                 <i class="icon ion-clock"></i>
                 {{starts_text}} {{ event.start | amCalendar }}
@@ -35,34 +36,20 @@
                 {{event.description || "no description provided"}}
             </div>
 
-            <div class="item item-icon-left">
-                <i class="icon ion-speakerphone"></i>
-                <p ng-repeat="comment in event.commentsResolved">
+            <vote-info on="event"></vote-info>
+        </div>
+
+        <h3><i class="icon ion-speakerphone"></i> Comments</h3>
+        <div class="ĺist">
+            <div class="item" ng-repeat="comment in event.commentsResolved">
+                <p>
                     <span class="fat">{{comment.ownerResolved.name||comment.owner}}:</span>
                     <span>{{comment.content}}</span>
                 </p>
             </div>
-
-
-            <!--<a class="item item-icon-left" href="#">-->
-            <!--<i class="icon ion-mic-a"></i>-->
-            <!--Record album-->
-            <!--<span class="item-note">-->
-            <!--Grammy-->
-            <!--</span>-->
-            <!--</a>-->
-
-            <!--<a class="item item-icon-left" href="#">-->
-            <!--<i class="icon ion-person-stalker"></i>-->
-            <!--Friends-->
-            <!--<span class="badge badge-assertive">0</span>-->
-            <!--</a>-->
-
-            <!--<button class="button button-energized" go-click="/app/home/events/{{event.id}}/edit">-->
-            <!--<i class="icon ion-edit"></i>-->
-            <!--edit-->
-            <!--</button>-->
         </div>
+
+
 
     </ion-content>
 </ion-view>
