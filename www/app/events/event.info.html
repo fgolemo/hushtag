@@ -9,13 +9,8 @@
     </button>
     <ion-content class="padding">
         <div class="list">
-
-            <!--<div class="item">-->
-            <!--<pre>-->
-            <!--{{event|json}}-->
-            <!--</pre>-->
-            <!--</div>-->
-
+            <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+            </ion-refresher>
             <div class="item item-icon-left">
                 <i class="icon ion-clock"></i>
                 {{starts_text}} {{ event.start | amCalendar }}

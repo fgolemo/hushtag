@@ -77,10 +77,10 @@ sharedModule.factory('Manager',
                         });
                 };
                 /* Public Methods */
-                this.get = function (id) {
+                this.get = function (id, force) {
                     var deferred = $q.defer();
                     var instance = this._search(id);
-                    if (instance) {
+                    if (instance && (!force || force == null)) {
                         deferred.resolve(instance);
                     } else {
                         this._load(id, deferred);
