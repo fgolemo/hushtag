@@ -1,16 +1,22 @@
 eventsModule
     .controller('EventInfoCtrl', function ($scope, EventsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate, Login, Settings) {
         var eventID = $stateParams.event;
+        var voterReady = false;
+        $scope.$on("voterReady", function() {
+            voterReady = true;
+        });
         var loadEvent = function(forced, cb) {
             EventsManager.m.get(eventID, forced).then(function (event) {
                 Resolver.loadRefs(event, null, true);
                 $scope.event = event;
                 $scope.starts_text = ( moment(event.start) < moment(new Date()) ) ? "started" : "starts";
-                console.log("CON: preparing to broadcast");
-                $scope.$on("voterReady", function() {
-                    console.log(" CON: broadcasting that I loaded event:"+event.id);
+                if (voterReady) {
                     $scope.$broadcast("objLoaded");
-                });
+                } else {
+                    $scope.$on("voterReady", function() {
+                        $scope.$broadcast("objLoaded");
+                    });
+                }
                 if (cb) {
                     cb();
                 }
