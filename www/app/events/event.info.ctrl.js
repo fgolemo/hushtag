@@ -6,6 +6,7 @@ eventsModule
                 Resolver.loadRefs(event, null, true);
                 $scope.event = event;
                 $scope.starts_text = ( moment(event.start) < moment(new Date()) ) ? "started" : "starts";
+                $scope.$broadcast("objLoaded");
                 if (cb) {
                     cb();
                 }
