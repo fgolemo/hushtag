@@ -16,7 +16,7 @@ eventsModule.factory('Event', ["moment", function (moment) {
         description: "",    // medium string, description of the event, can be multiline
         location: "",       // ID of a location
         locationResolved: "",// actual location
-        organizer: "",      // either string (if the event wasn't created by a user) or user ID
+        owner: "",      // either string (if the event wasn't created by a user) or user ID
         //genre: "",    // nope, instead we make the users chose from a list of genre tags
         pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
         comments: [],// list of IDs of comments on this entry, [88, 23, 189]

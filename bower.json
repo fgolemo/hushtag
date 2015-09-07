@@ -8,6 +8,7 @@
     "jshashes": "~1.0.5",
     "ionic-material": "~0.4.2",
     "robotodraft": "~1.1.0",
-    "angular-elastic": "~2.5.0"
+    "angular-elastic": "~2.5.0",
+    "ngCordova": "~0.1.20-alpha"
   }
 }

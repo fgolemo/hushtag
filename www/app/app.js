@@ -1,4 +1,5 @@
 angular.module('hushtag', [
+    'ngCordova',
     'ionic',
     //'ui.bootstrap',
     'hushtag.shared.httpPostFix',
