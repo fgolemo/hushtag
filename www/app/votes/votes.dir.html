@@ -8,10 +8,10 @@
     </div>
     <div class="item" ng-show="!obj.hasVoted">
         <div class="button-bar">
-            <button class="button button-small button-balanced">
+            <button class="button button-small button-balanced" ng-click="upvote()">
                 COOL
             </button>
-            <button class="button button-small button-assertive">
+            <button class="button button-small button-assertive" ng-click="downvote()">
                 NOT COOL
             </button>
         </div>

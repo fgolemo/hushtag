@@ -10,15 +10,17 @@ votesModule.directive('voteInfo', ['Votes', function (Votes) {
                 if (hasVotedChecker != null) {
                     hasVotedChecker.then(function (response) {
                         var r = response.data;
-                        if (r.status && r.status == "success" && r.reply) {
-                            scope.obj.hasVoted = true;
-                        } else {
-                            scope.obj.hasVoted = false;
-                        }
+                        scope.obj.hasVoted = !!(r.status && r.status == "success" && r.reply);
                     });
                 }
             });
             scope.$emit("voterReady");
+            scope.upvote = function() {
+                Votes.upvote(attrs.on, scope.obj.id);
+            };
+            scope.downvote = function() {
+                Votes.downvote(attrs.on, scope.obj.id);
+            };
         }
     };
 }]);
