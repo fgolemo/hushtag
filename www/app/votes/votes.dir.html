@@ -2,11 +2,11 @@
     <div class="item item-icon-left">
         <i class="icon ion-stats-bars"></i>
         Votes: {{obj.upvotes}} up / {{obj.downvotes}} down
-        <div ng-show="obj.hasVoted" class="assertive">
+        <div ng-show="login.isLoggedIn() && obj.hasVoted" class="assertive">
             you already voted
         </div>
     </div>
-    <div class="item" ng-show="!obj.hasVoted">
+    <div class="item" ng-show="login.isLoggedIn() && !obj.hasVoted">
         <div class="button-bar">
             <button class="button button-small button-balanced" ng-click="upvote()">
                 COOL

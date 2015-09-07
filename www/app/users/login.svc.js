@@ -1,7 +1,7 @@
 usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', function ($http, User, Settings, Localstorage) {
     this.user = null;
     this.isLoggedIn = function () {
-        return this.user != null && JSON.stringify(this.user) != "{}";
+        return (this.user != null && JSON.stringify(this.user) != "{}");
     };
 
     this.sendLogin = function (data, errorCB) {

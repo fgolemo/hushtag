@@ -25,7 +25,7 @@
           Locations
         </ion-item>
         <ion-item menu-close href="#/app/profile">
-          Profile
+          Profile<span ng-show="login.isLoggedIn()"> ({{login.user.name}})</span>
         </ion-item>
         <ion-item menu-close href="#/app/settings">
           Settings

@@ -7,7 +7,7 @@ coreModule.controller('AppCtrl', ['$scope', 'Login', function ($scope, Login) {
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-
+    $scope.login = Login;
 }])
 
 ;

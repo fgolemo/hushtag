@@ -1,10 +1,11 @@
-votesModule.directive('voteInfo', ['Votes', '$ionicPlatform', '$cordovaToast', '$ionicPopup',
-    function (Votes, $ionicPlatform, $cordovaToast, $ionicPopup) {
+votesModule.directive('voteInfo', ['Votes', '$ionicPlatform', '$cordovaToast', '$ionicPopup', 'Login',
+    function (Votes, $ionicPlatform, $cordovaToast, $ionicPopup, Login) {
         return {
             restrict: 'E',
             replace: 'true',
             templateUrl: 'app/votes/votes.dir.html',
             link: function (scope, elem, attrs) {
+                scope.login = Login;
                 scope.$on("objLoaded", function () {
                     scope.obj = scope[attrs.on];
                     var hasVotedChecker = Votes.hasVoted(attrs.on, scope.obj.id);
