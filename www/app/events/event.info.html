@@ -7,15 +7,28 @@
             go-click="/app/home/events/{{event.id}}/edit"
             ng-show="canEdit()">
     </button>
-    <ion-content class="padding">
+    <ion-content class="">
         <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
         </ion-refresher>
-        <h3>{{event.name}}</h3>
-        <div class="list">
-            <div class="item item-icon-left">
-                <i class="icon ion-clock"></i>
-                {{starts_text}} {{ event.start | amCalendar }}
+
+        <div class="hero" style="{{getHeroStyle()}}">
+            <div class="content">
+                <!--<h4>dragon_mommy</h4>-->
             </div>
+        </div>
+        <div class="mid-bar dark-bg z1 padding">
+            <h3><a class="light">{{event.name}}</a></h3>
+
+            <p>{{starts_text}} {{ event.start | amCalendar }}</p>
+
+            <p>{{event.locationResolved.name + ", " + event.locationResolved.city + ", " +
+                event.locationResolved.countryCode || "no description provided"}}</p>
+        </div>
+        <div class="list">
+            <!--<div class="item item-icon-left">-->
+            <!--<i class="icon ion-clock"></i>-->
+            <!-- -->
+            <!--</div>-->
 
             <div class="item">
                 <ion-scroll direction="x">
@@ -27,11 +40,6 @@
             </div>
 
             <div class="item item-icon-left">
-                <i class="icon ion-location"></i>
-                {{event.locationResolved.name || "no description provided"}}
-            </div>
-
-            <div class="item item-icon-left">
                 <i class="icon ion-information"></i>
                 {{event.description || "no description provided"}}
             </div>
@@ -40,6 +48,7 @@
         </div>
 
         <h3><i class="icon ion-speakerphone"></i> Comments</h3>
+
         <div class="ĺist">
             <div class="item" ng-repeat="comment in event.commentsResolved">
                 <p>
@@ -48,7 +57,6 @@
                 </p>
             </div>
         </div>
-
 
 
     </ion-content>

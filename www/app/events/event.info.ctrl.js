@@ -42,6 +42,13 @@ eventsModule
             loadEvent(true, function() {
                 $scope.$broadcast('scroll.refreshComplete');
             });
+        };
+        $scope.getHeroStyle = function () {
+            if ($scope.event && JSON.stringify($scope.event) != "{}" && $scope.event.header && $scope.event.header != "") {
+                return "background-image: url('"+$scope.event.header+"')";
+            } else {
+                return "";
+            }
         }
     })
 ;

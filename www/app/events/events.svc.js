@@ -25,6 +25,7 @@ eventsModule.factory('Event', ["moment", function (moment) {
         upvotes: 0,   // integer of upvotes
         downvotes: 0,   // integer of downvotes
         hasVoted: false,// boolean, indicator if the user himself has voted
+        header: "/img/event-header.png", // url of the header image of the event
         refs: [
             {
                 attribute: "location",

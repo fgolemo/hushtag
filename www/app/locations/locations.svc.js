@@ -7,6 +7,9 @@ locationsModule.factory('Location', [function () {
     Location.prototype = {
         id: "",     // unique identifier, either int (unlikely) or string.
         name: "",   // name of the establishment
+        city: "",   // name of the establishment
+        country: "",   // name of the establishment
+        countryCode: "",   // name of the establishment
         description: "",    // medium string, description of the event, can be multiline
         pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
         comments: [],// list of IDs of comments on this entry, [88, 23, 189]
