@@ -24,6 +24,8 @@
 
         <div ng-show="login.isLoggedIn()">
             <div class="list">
+                <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+                </ion-refresher>
                 <div class="item item-avatar">
                     <img ng-src="{{login.getUserAvatar()}}">
                     <h2>{{login.user.name}}</h2>

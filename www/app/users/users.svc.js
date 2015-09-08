@@ -22,12 +22,6 @@ usersModule.factory('User', [function () {
         setData: function (data) {
             angular.extend(this, data);
         },
-        delete: function () {
-            //$http.delete('ourserver/books/' + bookId);
-        },
-        update: function () {
-            //$http.put('ourserver/books/' + bookId, this);
-        },
         becomeAnonymous: function () {
             this.id = 0;
             this.name = "Anoymous";

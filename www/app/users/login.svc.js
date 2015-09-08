@@ -4,11 +4,11 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
         return (this.user != null && JSON.stringify(this.user) != "{}");
     };
 
-    this.sendLogin = function (data, errorCB) {
+    this.sendLogin = function (data, errorCB, cb) {
         var self = this;
         $http.post(Settings.database + "login", data)
             .then(function (response) {
-                self.responseHandlerLogin(response, errorCB, data);
+                self.responseHandlerLogin(response, errorCB, data, cb);
             }, function (response) { // when there was an error
                 console.log("couldn't log in with data:");
                 console.dir(data);
@@ -19,11 +19,14 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
     };
 
 
-    this.responseHandlerLogin = function (response, errorCB, data) {
+    this.responseHandlerLogin = function (response, errorCB, data, cb) {
         if (response.data.status && response.data.status == "success") {
             this.user = response.data.obj;
             Localstorage.setObject('user', data);
             this.getRep();
+            if (cb) {
+                cb();
+            }
         } else if (response.data.status && response.data.status == "fail") {
             errorCB(response.data.msg);
         } else {
@@ -90,11 +93,19 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
         }
     };
 
-    var storedAuth = Localstorage.getObject('user');
-    if (JSON.stringify(storedAuth) != '{}') {
-        this.sendLogin(storedAuth, function (error) {
-            console.log("ERROR: problem with auto login: " + error);
-        });
-    }
+    this.reLogin = function(cb) {
+        var storedAuth = Localstorage.getObject('user');
+        if (JSON.stringify(storedAuth) != '{}') {
+            this.sendLogin(storedAuth, function (error) {
+                console.log("ERROR: problem with auto login: " + error);
+            }, function() {
+                if (cb) {
+                    cb();
+                }
+            });
+        }
+    };
+
+    this.reLogin();
 
 }]);

@@ -30,5 +30,10 @@ usersModule
         $scope.scrollTop = function() {
             $ionicScrollDelegate.scrollTop();
         };
+        $scope.doRefresh = function() {
+            Login.reLogin(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+        }
     })
 ;
