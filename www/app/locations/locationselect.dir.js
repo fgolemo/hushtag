@@ -5,6 +5,7 @@ locationsModule.directive('locationSelect', ['Modal', 'LocationsManager',
             replace: 'true',
             templateUrl: 'app/locations/locationselect.dir.html',
             link: function (scope, elem, attrs) {
+                scope.obj = scope[attrs.on];
                 LocationsManager.m.loadAll().then(function(locations) {
                     scope.locations = locations;
                 });
@@ -17,11 +18,11 @@ locationsModule.directive('locationSelect', ['Modal', 'LocationsManager',
                             return; // if user hits "cancel", i.e. don't change the current location
                         }
                         if (location == "none") {
-                            delete scope.event.locationResolved;
-                            scope.event.location = "";
+                            delete scope[attrs.on].locationResolved;
+                            scope[attrs.on].location = "";
                         } else {
-                            scope.event.locationResolved = location;
-                            scope.event.location = location.id;
+                            scope[attrs.on].locationResolved = location;
+                            scope[attrs.on].location = location.id;
                         }
                     });
                 locationSelect.init();
