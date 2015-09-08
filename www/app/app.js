@@ -19,7 +19,7 @@ angular.module('hushtag', [
     'ionic-material'
 ])
 
-    .run(function ($ionicPlatform, amMoment, $ionicLoading, Settings, $rootScope) {
+    .run(function ($ionicPlatform, amMoment, $ionicLoading, Settings, $rootScope, Helper) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs
@@ -31,6 +31,8 @@ angular.module('hushtag', [
                 StatusBar.styleDefault();
             }
         });
+        Helper.addGlobalHelpers();
+
         amMoment.changeLocale('en-gb'); //TODO: this is very temporary and should be done automatically later on
 
         $rootScope.$on('loading:show', function() {

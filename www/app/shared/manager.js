@@ -104,7 +104,7 @@ sharedModule.factory('Manager',
                                 deferred.resolve(out);
                             }
                         } else {
-                            this._loadSync(id, function(instance) {
+                            this._loadSync(id, function (instance) {
                                 if (instance != null) {
                                     out.push(instance);
                                 }
@@ -148,6 +148,31 @@ sharedModule.factory('Manager',
                     }
                     return instance;
                 };
+                this.create = function (instance) {
+                    var deferred = $q.defer();
+                    var userToken = Login.getUserToken();
+                    if (!userToken) {
+                        console.log("ERROR: usertoken not found");
+                        deferred.reject();
+                    }
+                    var scope = this;
+                    instance.pack();
+                    var url = this.server + objName.toLowerCase() + 's';
+                    var obj = {obj: instance, ut: userToken};
+                    $http.post(url, obj)
+                        .then(function (response) { // when response is available
+                            if (response.data && response.data.status=="success" && response.data.obj) {
+                                scope._retrieveInstance(response.data.obj.id, response.data.obj);
+                            }
+                            deferred.resolve(response.data);
+                        }, function (response) { // when there was an error
+                            console.log("couldn't post data for " + objName);
+                            console.dir(response);
+                            deferred.reject();
+                        }
+                    );
+                    return deferred.promise;
+                };
                 this.update = function (data) {
                     var deferred = $q.defer();
                     var userToken = Login.getUserToken();
@@ -160,7 +185,7 @@ sharedModule.factory('Manager',
                     if (instance) {
                         instance.pack();
                         var url = this.server + objName.toLowerCase() + '/' + data.id;
-                        var obj = {obj:instance, ut:userToken};
+                        var obj = {obj: instance, ut: userToken};
                         $http.put(url, obj)
                             .then(function (response) { // when response is available
                                 deferred.resolve(response.data);
