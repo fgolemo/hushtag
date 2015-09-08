@@ -1,0 +1,43 @@
+<ion-view view-title="{{taskname}}">
+    <ion-nav-title>
+        {{taskname}}
+    </ion-nav-title>
+    <ion-content class="padding">
+
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Event Name</span>
+                <input type="text" ng-model="event.name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Start Date</span>
+                <input type="datetime-local" ng-model="event.startDate">
+            </label>
+
+            <div class="item item-toggle">
+                End Date / Time important
+                <label class="toggle toggle-royal">
+                    <input type="checkbox" ng-model="event.hasEnd">
+
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+            <label class="item item-input" ng-show="event.hasEnd">
+                <span class="input-label">End Date</span>
+                <input type="datetime-local" ng-model="event.endDate">
+            </label>
+            <location-select on="event"></location-select>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Description</span>
+                <textarea ng-model="event.description" msd-elastic class="elastic"></textarea>
+            </label>
+
+        </div>
+        <div></div>
+        <button class="button button-block button-energized" ng-click="update()">
+            Update
+        </button>
+    </ion-content>
+</ion-view>

@@ -1,47 +1,24 @@
 sharedModule.provider("naviCreator", function () {
-        return ({
-            addNaviFor: addNaviFor,
-            $get: init
-        });
+        function generateConfig(name, urlSuffix, tmplSuffix, ctrlSuffix) {
+            var conf = {
+                url: '/' + name + 's' + urlSuffix,
+                views: {}
+            };
+            conf.views[name + 's'] = {
+                templateUrl: 'app/' + name + 's/' + name + tmplSuffix + '.html',
+                controller: name.capitalize() + ctrlSuffix + 'Ctrl'
+            };
+            return conf;
+        }
 
-        function addNaviFor (name, basePath, $stateProvider) {
+        function addNaviFor(name, basePath, $stateProvider) {
+            var navName = basePath + '.' + name;
             $stateProvider
-                .state(basePath + '.' + name + 's', {
-                    url: '/' + name + 's',
-                    views: {
-                        'events': {
-                            templateUrl: 'app/' + name + 's/' + name + 's.html',
-                            controller: name.capitalize() + 'sCtrl'
-                        }
-                    }
-                })
-                .state(basePath + '.' + name + 'create', {
-                    url: '/' + name + 's/create',
-                    views: {
-                        'events': {
-                            templateUrl: 'app/' + name + 's/' + name + '.edit.html',
-                            controller: name.capitalize() + 'CreateCtrl'
-                        }
-                    }
-                })
-                .state(basePath + '.' + name, {
-                    url: '/' + name + 's/:' + name,
-                    views: {
-                        'events': {
-                            templateUrl: 'app/' + name + 's/' + name + '.info.html',
-                            controller: name.capitalize() + 'InfoCtrl'
-                        }
-                    }
-                })
-                .state(basePath + '.' + name + 'edit', {
-                    url: '/' + name + 's/:' + name + '/edit',
-                    views: {
-                        'events': {
-                            templateUrl: 'app/' + name + 's/' + name + '.edit.html',
-                            controller: name.capitalize() + 'EditCtrl'
-                        }
-                    }
-                });
+                .state(navName + 's', generateConfig(name, '', 's', 's'))
+                .state(navName + 's/create', generateConfig(name, '/create', '.edit', 'Create'))
+                .state(navName, generateConfig(name, '/:' + name, '.info', 'Info'))
+                .state(navName + 'edit', generateConfig(name, '/:' + name + '/edit', '.edit', 'Edit'))
+            ;
         }
 
         function init() {
@@ -49,5 +26,9 @@ sharedModule.provider("naviCreator", function () {
             return ({});
         }
 
+        return ({
+            addNaviFor: addNaviFor,
+            $get: init
+        });
     }
 );

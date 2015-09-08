@@ -98,16 +98,6 @@ angular.module('hushtag', [
             })
 
 
-            .state('app.home.hushtags', {
-                url: "/hushtags",
-                views: {
-                    'hushtags': {
-                        templateUrl: "app/hushtags/hushtags.html",
-                        controller: 'HushtagsCtrl'
-                    }
-                }
-            })
-
             .state('app.locations', {
                 url: "/locations",
                 views: {
@@ -157,6 +147,7 @@ angular.module('hushtag', [
             });
 
         naviCreatorProvider.addNaviFor('event', 'app.home', $stateProvider);
+        naviCreatorProvider.addNaviFor('hushtag', 'app.home', $stateProvider);
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home/news');
