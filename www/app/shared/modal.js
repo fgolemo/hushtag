@@ -10,11 +10,15 @@ sharedModule.factory('Modal', ['$ionicModal', function ($ionicModal) {
             });
             scope.openModal = function() {
                 scope.modal.show();
-                openCB();
+                if (openCB) {
+                    openCB();
+                }
             };
-            scope.closeModal = function() {
+            scope.closeModal = function(element) {
                 scope.modal.hide();
-                closeCB();
+                if (closeCB) {
+                    closeCB(element);
+                }
             };
             //Cleanup the modal when we're done with it!
             scope.$on('$destroy', function() {
