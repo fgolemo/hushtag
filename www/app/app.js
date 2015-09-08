@@ -44,7 +44,7 @@ angular.module('hushtag', [
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, naviCreatorProvider) {
         $httpProvider.interceptors.push(function($rootScope) {
             return {
                 request: function(config) {
@@ -85,45 +85,6 @@ angular.module('hushtag', [
                 }
             })
 
-            .state('app.home.events', {
-                url: "/events",
-                views: {
-                    'events': {
-                        templateUrl: "app/events/events.html",
-                        controller: 'EventsCtrl'
-                    }
-                }
-            })
-            .state('app.home.eventcreate', {
-                url: "/events/create",
-                //cache: false,
-                views: {
-                    'events': {
-                        templateUrl: "app/events/event.edit.html",
-                        controller: 'EventCreateCtrl'
-                    }
-                }
-            })
-            .state('app.home.event', {
-                url: "/events/:event",
-                //cache: false,
-                views: {
-                    'events': {
-                        templateUrl: "app/events/event.info.html",
-                        controller: 'EventInfoCtrl'
-                    }
-                }
-            })
-            .state('app.home.eventedit', {
-                url: "/events/:event/edit",
-                //cache: false,
-                views: {
-                    'events': {
-                        templateUrl: "app/events/event.edit.html",
-                        controller: 'EventEditCtrl'
-                    }
-                }
-            })
 
             .state('app.home.pic', {
                 url: "/pic/:pic",
@@ -194,6 +155,9 @@ angular.module('hushtag', [
                     }
                 }
             });
+
+        naviCreatorProvider.addNaviFor('event', 'app.home', $stateProvider);
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home/news');
     });
