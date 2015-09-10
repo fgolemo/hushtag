@@ -1,0 +1,8 @@
+<a class="item item-icon-right" href="#" ng-click="openModal()">
+    Synonyms
+    <i class="icon ion-arrow-right-b"></i>
+    <span class="item-note" ng-show="hushtag.synonyms.length == 0">-none-</span>
+    <span class="item-note" ng-show="hushtag.synonyms.length > 0">
+        {{hushtag.synonyms.join(', ') | limitTo:limit}}
+    </span>
+</a>

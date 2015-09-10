@@ -5,10 +5,14 @@
     <ion-content class="padding">
 
         <div class="list">
+            <!--<div class="item item-full">-->
+                <!--{{hushtag|json}}-->
+            <!--</div>-->
             <label class="item item-input">
                 <span class="input-label">Name</span>
                 <input type="text" ng-model="hushtag.name">
             </label>
+            <synonym-select></synonym-select>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Description</span>
                 <textarea ng-model="hushtag.description" msd-elastic class="elastic"></textarea>
