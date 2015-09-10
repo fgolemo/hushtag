@@ -34,41 +34,11 @@
                 </ion-scroll>
             </div>
 
-            <div class="item">
-                <!--<i class="icon ion-information"></i>-->
-                Description
-                <span class="item-note">
-                    {{hushtag.description || "no description provided"}}
-                </span>
-            </div>
-
-            <div class="item">
-                Forms
-                <span class="item-note">
-                    {{hushtag.forms || "no forms info provided"}}
-                </span>
-            </div>
-
-            <div class="item">
-                Dosages
-                <span class="item-note">
-                    {{hushtag.dosages || "no dosage info provided"}}
-                </span>
-            </div>
-
-            <div class="item">
-                Safety
-                <span class="item-note">
-                    {{hushtag.safety || "no safety info provided"}}
-                </span>
-            </div>
-
-            <div class="item">
-                Legality
-                <span class="item-note">
-                    {{hushtag.legality || "no legality information provided"}}
-                </span>
-            </div>
+            <hushtag-info-box for="description"></hushtag-info-box>
+            <hushtag-info-box for="forms"></hushtag-info-box>
+            <hushtag-info-box for="dosages"></hushtag-info-box>
+            <hushtag-info-box for="safety"></hushtag-info-box>
+            <hushtag-info-box for="legality"></hushtag-info-box>
 
         </div>
 

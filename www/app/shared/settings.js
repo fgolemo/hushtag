@@ -12,5 +12,6 @@ sharedModule.service('Settings', [function () {
     this.rep = {
         create: 20,
         edit: 100
-    }
+    };
+    this.hushtagInfoBoxLimit = 40;
 }]);

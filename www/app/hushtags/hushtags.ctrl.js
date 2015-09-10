@@ -16,5 +16,6 @@ hushtagsModule
             });
         };
         $scope.firstLetter = Helper.firstLetter;
+        //$scope.showDosages = false;
     })
 ;

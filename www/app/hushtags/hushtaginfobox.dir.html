@@ -1,0 +1,6 @@
+<a class="item" href="#" ng-click="showInfo = !showInfo">
+    {{property.capitalize()}}
+    <span class="item-note">
+        {{(showInfo || hushtag[property].length < limit) ? (hushtag[property]) : ((hushtag[property] | limitTo:limit) + "...")}}
+    </span>
+</a>
