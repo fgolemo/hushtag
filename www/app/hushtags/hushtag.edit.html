@@ -6,32 +6,28 @@
 
         <div class="list">
             <label class="item item-input">
-                <span class="input-label">Event Name</span>
-                <input type="text" ng-model="event.name">
+                <span class="input-label">Name</span>
+                <input type="text" ng-model="hushtag.name">
             </label>
-            <label class="item item-input">
-                <span class="input-label">Start Date</span>
-                <input type="datetime-local" ng-model="event.startDate">
-            </label>
-
-            <div class="item item-toggle">
-                End Date / Time important
-                <label class="toggle toggle-royal">
-                    <input type="checkbox" ng-model="event.hasEnd">
-
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </div>
-            <label class="item item-input" ng-show="event.hasEnd">
-                <span class="input-label">End Date</span>
-                <input type="datetime-local" ng-model="event.endDate">
-            </label>
-            <location-select on="event"></location-select>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Description</span>
-                <textarea ng-model="event.description" msd-elastic class="elastic"></textarea>
+                <textarea ng-model="hushtag.description" msd-elastic class="elastic"></textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Forms</span>
+                <textarea ng-model="hushtag.forms" msd-elastic class="elastic"></textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Dosages</span>
+                <textarea ng-model="hushtag.dosages" msd-elastic class="elastic"></textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Safety</span>
+                <textarea ng-model="hushtag.safety" msd-elastic class="elastic"></textarea>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Legality</span>
+                <textarea ng-model="hushtag.legality" msd-elastic class="elastic"></textarea>
             </label>
 
         </div>

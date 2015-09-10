@@ -30,6 +30,12 @@ hushtagsModule.factory('Hushtag', [function () {
 
         setData: function (data) {
             angular.extend(this, data);
+        },
+        unpack: function () {
+            
+        },
+        pack: function () {
+
         }
     };
     return Hushtag;

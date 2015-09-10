@@ -1,14 +1,14 @@
 hushtagsModule
-    .controller('HushtagEditCtrl', function ($scope, $stateParams, EventsManager, $ionicPopup, $location, Helper) {
-        $scope.taskname = "Edit Event";
-        var eventID = $stateParams.event;
-        EventsManager.m.get(eventID).then(function(event) {
+    .controller('HushtagEditCtrl', function ($scope, $stateParams, HushtagsManager, Helper) {
+        $scope.taskname = "Edit Hushtag";
+        var objID = $stateParams.hushtag;
+        HushtagsManager.m.get(objID).then(function(hushtag) {
             //Resolver.loadRefs(event);
-            $scope.event = event;
+            $scope.hushtag = hushtag;
         });
         $scope.update = function() {
-            EventsManager.m.update($scope.event).then(function(response) {
-                Helper.updateCallback("event", response);
+            HushtagsManager.m.update($scope.hushtag).then(function(response) {
+                Helper.updateCallback("hushtag", response);
             });
         };
     })
