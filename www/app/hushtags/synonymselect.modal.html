@@ -6,7 +6,10 @@
         <div class="list">
             <div class="item" ng-repeat="synonym in synonyms track by $index">
                 <input type="text" class="pull-left" ng-model="synonyms[$index]" placeholder="enter synonym">
-                <button class="button button-small button-assertive icon ion-close"></button>
+                <button
+                        class="button button-small button-assertive icon ion-close"
+                        ng-click="synonyms.splice($index, 1)"
+                ></button>
             </div>
             <div class="item">
                 <button class="button button-balanced" ng-click="synonyms.push('')">add</button>

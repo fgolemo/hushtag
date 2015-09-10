@@ -5,15 +5,17 @@ hushtagsModule.directive('synonymSelect', ['Modal', 'Settings',
             replace: 'true',
             templateUrl: 'app/hushtags/synonymselect.dir.html',
             link: function (scope, elem, attrs) {
-                scope.synonyms = scope.hushtag.synonyms || [];
+                scope.synonyms = JSON.parse(JSON.stringify(scope.hushtag.synonyms)) || [];
                 scope.limit = Settings.hushtagInfoBoxLimit;
                 var selectModal = new Modal(
                     scope,
                     'app/hushtags/synonymselect.modal.html',
-                    angular.noop,
+                    function() {
+                        scope.synonyms = JSON.parse(JSON.stringify(scope.hushtag.synonyms)) || [];
+                    },
                     function (synonyms) {
                         if (synonyms != null) {
-                            scope.hushtag.synonyms = synonyms;
+                            scope.hushtag.synonyms = JSON.parse(JSON.stringify(synonyms)) || [];
                         }
                     });
                 selectModal.init();
