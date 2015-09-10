@@ -36,6 +36,10 @@ sharedModule.service('Helper', ['$ionicPopup', '$location', function ($ionicPopu
         return 0;
     };
 
+    this.firstLetter = function(name) {
+        return name && name.charAt(0).toUpperCase();
+    };
+
 }]);
 
 

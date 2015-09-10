@@ -15,8 +15,6 @@ hushtagsModule
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };
-        $scope.firstLetter = function(name) {
-            return name && name.charAt(0).toUpperCase();
-        };
+        $scope.firstLetter = Helper.firstLetter;
     })
 ;
