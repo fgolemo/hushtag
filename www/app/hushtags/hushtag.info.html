@@ -14,17 +14,19 @@
         <div class="mid-bar dark-bg z1 padding">
             <h3><a class="light">{{hushtag.name}}</a></h3>
 
-            <p>family: TODO</p>
+            <p>family:
+                <span ng-if="hushtag.family.length == 0"> --- </span>
+                <span ng-if="hushtag.family.length > 0"
+                      ng-repeat="member in hushtag.familyResolved">
+                    {{member.name}}{{$last ? '' : ', '}}
+                </span>
+            </p>
 
             <p>also known as: {{hushtag.synonyms.sort().join(', ')}}</p>
 
         </div>
-        <div class="list">
-            <!--<div class="item item-icon-left">-->
-            <!--<i class="icon ion-clock"></i>-->
-            <!-- -->
-            <!--</div>-->
 
+        <div class="list">
             <div class="item">
                 <ion-scroll direction="x">
                     <img ng-repeat="pic in hushtag.pics"

@@ -13,13 +13,20 @@ hushtagsModule.factory('Hushtag', [function () {
         legality: "no legality information provided",// medium string with common legality, "highly illegal in almost all countries except Thailand & Indonesia"
         safety: "no safety info provided", // medium string with common safety advise, "highly addictive, will cause mild depression a few days after consumption"
         description: "no description provided", // short string / one line summary of the drug, "famous party & festival drug that increases social interaction,..."
-        synonyms: [],// list of strings of other known aliases, ["Amp", "Giga", "headsmash"]
+        synonyms: ["no aliases found"],// list of strings of other known aliases, ["Amp", "Giga", "headsmash"]
         forms: "no forms info provided",  // short string, common form(s), "usually pills, rarely liquid"
         uses: [],   // list of IDs of HushtagUse(s), [123, 456]
         comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
         owner: "",  // either string (if the event wasn't created by a user) or user ID
+        refs: [
+            {
+                attribute: "family",
+                type: "Hushtag",
+                quantity: "many"
+            }
+        ],
 
         setData: function (data) {
             angular.extend(this, data);

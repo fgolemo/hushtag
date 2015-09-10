@@ -1,6 +1,7 @@
-sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'CommentsManager', 'UsersManager',
-    function (EventsManager, LocationsManager, CommentsManager, UsersManager) {
+sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'CommentsManager', 'UsersManager', 'HushtagsManager',
+    function (EventsManager, LocationsManager, CommentsManager, UsersManager, HushtagsManager) {
         this._managers = {
+            "Hushtag": HushtagsManager,
             "Event": EventsManager,
             "Location": LocationsManager,
             "Comment": CommentsManager,
