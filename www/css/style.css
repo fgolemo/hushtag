@@ -108,3 +108,7 @@ div.item-divider.item-divider-bordered {
     color: #222;
 }
 
+.item span.item-note {
+    white-space: normal;
+}
+

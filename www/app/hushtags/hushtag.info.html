@@ -34,9 +34,40 @@
                 </ion-scroll>
             </div>
 
-            <div class="item item-icon-left">
-                <i class="icon ion-information"></i>
-                {{event.description || "no description provided"}}
+            <div class="item">
+                <!--<i class="icon ion-information"></i>-->
+                Description
+                <span class="item-note">
+                    {{hushtag.description || "no description provided"}}
+                </span>
+            </div>
+
+            <div class="item">
+                Forms
+                <span class="item-note">
+                    {{hushtag.forms || "no forms info provided"}}
+                </span>
+            </div>
+
+            <div class="item">
+                Dosages
+                <span class="item-note">
+                    {{hushtag.dosages || "no dosage info provided"}}
+                </span>
+            </div>
+
+            <div class="item">
+                Safety
+                <span class="item-note">
+                    {{hushtag.safety || "no safety info provided"}}
+                </span>
+            </div>
+
+            <div class="item">
+                Legality
+                <span class="item-note">
+                    {{hushtag.legality || "no legality information provided"}}
+                </span>
             </div>
 
         </div>
