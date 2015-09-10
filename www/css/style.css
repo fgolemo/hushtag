@@ -100,3 +100,8 @@
 }
 
 textarea.elastic {resize: none;}
+
+div.item-divider.item-divider-bordered {
+    border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+

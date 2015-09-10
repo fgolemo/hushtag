@@ -1,11 +1,11 @@
 sharedModule.service('Helper', ['$ionicPopup', '$location', function ($ionicPopup, $location) {
-    this.updateCallback = function(type, response) {
+    this.updateCallback = function (type, response) {
         if (response.status == "success") {
             $ionicPopup.alert({
                 title: "Done",
-                template: type.capitalize()+" successfully updated"
-            }).then(function() {
-                $location.path("/app/home/"+type+"s/"+response.obj.id);
+                template: type.capitalize() + " successfully updated"
+            }).then(function () {
+                $location.path("/app/home/" + type + "s/" + response.obj.id);
             });
         } else {
             $ionicPopup.alert({
@@ -15,14 +15,31 @@ sharedModule.service('Helper', ['$ionicPopup', '$location', function ($ionicPopu
         }
     };
 
-    this.addGlobalHelpers = function() {
+    this.addGlobalHelpers = function () {
 
-    }
+    };
+
+    this.compare = function (a, b, property) {
+        if (a[property] < b[property])
+            return -1;
+        if (a[property] > b[property])
+            return 1;
+        return 0;
+    };
+
+    this.nameComparator = function (a, b) {
+        //return this.compare(a, b, "name"); //doesn't work for some ridiculous reason
+        if (a.name < b.name)
+            return -1;
+        if (a.name > b.name)
+            return 1;
+        return 0;
+    };
 
 }]);
 
 
-String.prototype.capitalize = function() {
+String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 

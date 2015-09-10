@@ -15,21 +15,15 @@
                 </label>
             </div>
 
-            <a ng-repeat="ht in hushtags | filter:query | orderBy:'name'"
-               class="item"
-               href="#/app/home/hushtags/{{ht.id}}">
-                {{ht.name}}
-            </a>
-
-            <!--TODO: add custom repeater directive to add those separators in between elements-->
-            <!--<div class="item item-divider">-->
-                <!--A-->
-            <!--</div>-->
-
-
-            <!--<div class="item item-divider">-->
-                <!--C-->
-            <!--</div>-->
+            <div ng-repeat="ht in hushtags | filter:query">
+                <div class="item item-divider item-divider-bordered" ng-if="firstLetter(ht.name) != firstLetter(hushtags[$index-1].name)">
+                    {{firstLetter(ht.name)}}
+                </div>
+                <a class="item"
+                   href="#/app/home/hushtags/{{ht.id}}">
+                    {{ht.name}}
+                </a>
+            </div>
 
         </div>
     </ion-content>
