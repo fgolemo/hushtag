@@ -32,7 +32,7 @@ hushtagsModule.factory('Hushtag', [function () {
             angular.extend(this, data);
         },
         unpack: function () {
-            
+
         },
         pack: function () {
 

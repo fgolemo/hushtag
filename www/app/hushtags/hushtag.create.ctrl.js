@@ -1,10 +1,10 @@
 hushtagsModule
-    .controller('HushtagCreateCtrl', function ($scope, EventsManager, Event, Helper, Modal, LocationsManager) {
-        $scope.taskname = "Create Event";
-        $scope.event = new Event();
+    .controller('HushtagCreateCtrl', function ($scope, HushtagsManager, Hushtag, Helper) {
+        $scope.taskname = "Create Hushtag";
+        $scope.hushtag = new Hushtag();
         $scope.update = function () {
-            EventsManager.m.create($scope.event).then(function (response) {
-                Helper.updateCallback("event", response);
+            HushtagsManager.m.create($scope.hushtag).then(function (response) {
+                Helper.updateCallback("hushtag", response);
             });
         };
     })
