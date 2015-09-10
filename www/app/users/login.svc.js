@@ -18,6 +18,16 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
         );
     };
 
+    this.canEdit = function (owner, repID) {
+        // repID:0 = Events
+        // repID:1 = Hushtags
+        // repID:2 = Locations
+
+        return (this.isLoggedIn() &&
+        this.user && this.user.rep &&
+        (owner == this.user.id ||
+        this.user.rep[repID] >= Settings.rep.edit));
+    };
 
     this.responseHandlerLogin = function (response, errorCB, data, cb) {
         if (response.data.status && response.data.status == "success") {
@@ -63,7 +73,7 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
             return false;
         }
         var self = this;
-        $http.get(Settings.database + "user/"+this.user.id+"/rep")
+        $http.get(Settings.database + "user/" + this.user.id + "/rep")
             .then(function (response) {
                 if (response.data.status && response.data.status == "success") {
                     self.user.rep = response.data.obj;
@@ -76,14 +86,14 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
         );
     };
 
-    this.errorHandler = function(errorMsg, response) {
+    this.errorHandler = function (errorMsg, response) {
         console.log(errorMsg);
         console.dir(self.user);
         console.log("server response:");
         console.dir(response);
     };
 
-    this.getUserToken = function() {
+    this.getUserToken = function () {
         if (!this.isLoggedIn()) {
             return false;
         }
@@ -93,12 +103,12 @@ usersModule.service('Login', ['$http', 'User', 'Settings', 'Localstorage', funct
         }
     };
 
-    this.reLogin = function(cb) {
+    this.reLogin = function (cb) {
         var storedAuth = Localstorage.getObject('user');
         if (JSON.stringify(storedAuth) != '{}') {
             this.sendLogin(storedAuth, function (error) {
                 console.log("ERROR: problem with auto login: " + error);
-            }, function() {
+            }, function () {
                 if (cb) {
                     cb();
                 }

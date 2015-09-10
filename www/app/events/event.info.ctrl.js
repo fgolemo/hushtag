@@ -1,5 +1,5 @@
 eventsModule
-    .controller('EventInfoCtrl', function ($scope, EventsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate, Login, Settings) {
+    .controller('EventInfoCtrl', function ($scope, EventsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate, Login) {
         var eventID = $stateParams.event;
         var voterReady = false;
         $scope.$on("voterReady", function() {
@@ -33,10 +33,7 @@ eventsModule
             $scope.modal.show();
         };
         $scope.canEdit = function () {
-            return (Login.isLoggedIn() &&
-            Login.user && Login.user.rep &&
-            ($scope.event.organizer == Login.user.id ||
-            Login.user.rep[0] >= Settings.rep.edit));
+            return Login.canEdit($scope.event.owner, 0);
         };
         $scope.doRefresh = function() {
             loadEvent(true, function() {

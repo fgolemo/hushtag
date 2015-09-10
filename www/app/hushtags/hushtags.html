@@ -15,7 +15,9 @@
                 </label>
             </div>
 
-            <a ng-repeat="ht in hushtags | filter:query | orderBy:'name'" class="item" href="#">
+            <a ng-repeat="ht in hushtags | filter:query | orderBy:'name'"
+               class="item"
+               href="#/app/home/hushtags/{{ht.id}}">
                 {{ht.name}}
             </a>
 

@@ -19,27 +19,11 @@ hushtagsModule.factory('Hushtag', [function () {
         comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
+        owner: "",  // either string (if the event wasn't created by a user) or user ID
 
         setData: function (data) {
             angular.extend(this, data);
-        },
-        delete: function () {
-            //$http.delete('ourserver/books/' + bookId);
-        },
-        update: function () {
-            //$http.put('ourserver/books/' + bookId, this);
         }
-        //getImageUrl: function(width, height) {
-        //    return 'our/image/service/' + this.book.id + '/width/height';
-        //},
-        //isAvailable: function() {
-        //    if (!this.book.stores || this.book.stores.length === 0) {
-        //        return false;
-        //    }
-        //    return this.book.stores.some(function(store) {
-        //        return store.quantity > 0;
-        //    });
-        //}
     };
     return Hushtag;
 }]);

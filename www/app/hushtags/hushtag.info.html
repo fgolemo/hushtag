@@ -1,28 +1,23 @@
-<ion-view view-title="{{event.name}}">
+<ion-view view-title="{{hushtag.name}}">
     <ion-nav-title>
-        {{event.name}}
+        {{hushtag.name}}
     </ion-nav-title>
     <button
             class="button button-fab button-energized icon ion-edit button-fab-bottom-right"
-            go-click="/app/home/events/{{event.id}}/edit"
+            go-click="/app/home/hushtags/{{hushtag.id}}/edit"
             ng-show="canEdit()">
     </button>
     <ion-content class="">
         <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
         </ion-refresher>
 
-        <div class="hero" style="{{getHeroStyle()}}">
-            <div class="content">
-                <!--<h4>dragon_mommy</h4>-->
-            </div>
-        </div>
         <div class="mid-bar dark-bg z1 padding">
-            <h3><a class="light">{{event.name}}</a></h3>
+            <h3><a class="light">{{hushtag.name}}</a></h3>
 
-            <p>{{starts_text}} {{ event.start | amCalendar }}</p>
+            <p>family: TODO</p>
 
-            <p>{{event.locationResolved.name + ", " + event.locationResolved.city + ", " +
-                event.locationResolved.countryCode || "no description provided"}}</p>
+            <p>also known as: {{hushtag.synonyms.sort().join(', ')}}</p>
+
         </div>
         <div class="list">
             <!--<div class="item item-icon-left">-->
@@ -32,7 +27,7 @@
 
             <div class="item">
                 <ion-scroll direction="x">
-                    <img ng-repeat="pic in event.pics"
+                    <img ng-repeat="pic in hushtag.pics"
                          ng-src="{{pic}}"
                          ng-click="showImages($index)"
                          class="image-list-thumb"/>
@@ -44,7 +39,6 @@
                 {{event.description || "no description provided"}}
             </div>
 
-            <vote-info on="event"></vote-info>
         </div>
 
         <h3><i class="icon ion-speakerphone"></i> Comments</h3>
