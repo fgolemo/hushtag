@@ -15,6 +15,7 @@ angular.module('hushtag', [
     'hushtag.users',
     'hushtag.comments',
     'hushtag.votes',
+    'hushtag.help',
     'hushtag.hushtags',
     'ionic-material'
 ])
@@ -113,6 +114,16 @@ angular.module('hushtag', [
                     'menuContent': {
                         templateUrl: "app/users/user.info.html",
                         controller: 'UserInfoCtrl'
+                    }
+                }
+            })
+
+            .state('app.help', {
+                url: "/help",
+                views: {
+                    'menuContent': {
+                        templateUrl: "app/help/help.html",
+                        controller: 'HelpCtrl'
                     }
                 }
             })
