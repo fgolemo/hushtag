@@ -14,4 +14,16 @@ sharedModule.service('Settings', [function () {
         edit: 100
     };
     this.hushtagInfoBoxLimit = 40;
+    this.mails = {
+        support:{
+            to: 'support@hushtag.co.uk',
+            subject: 'Support request for Hushtag app',
+            body: 'Hey Hushtag team,\n\nHow are you doing?\n\nI was wondering if you could help me with this issue:\n\n'
+        },
+        feedback: {
+            to: 'team@hushtag.co.uk',
+            subject: 'Hushtag feedback',
+            body: 'Hey Hushtag team,\n\nI just wanted to let you know:\n\n'
+        }
+    };
 }]);

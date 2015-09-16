@@ -3,6 +3,7 @@ angular.module('hushtag', [
     'ionic',
     //'ui.bootstrap',
     'hushtag.shared.httpPostFix',
+    'hushtag.shared.urlify',
     'angularMoment',
     'monospaced.elastic',
     'hushtag.services',

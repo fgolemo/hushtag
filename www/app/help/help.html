@@ -1,6 +1,7 @@
-<ion-view view-title="Events" hide-back-button="false">
+<ion-view view-title="Help, T&C" hide-back-button="false">
     <ion-content class="padding">
         <h4>Ground Rules</h4>
+
         <div class="list">
             <div class="item">
                 be safe
@@ -31,6 +32,33 @@
                     <br>
                     If you see a post with someone else’s personally identifying information, flag it.
                 </span>
+            </div>
+            <div class="item">
+                <button class="button button-stable">more details</button>
+            </div>
+        </div>
+        <br>
+        <h4>Help</h4>
+        <div class="list">
+            <div class="item">
+                <button class="button button-stable">Show Tutorial</button>
+            </div>
+            <div class="item">
+                <a class="button button-stable" ng-href="{{hrefSupport}}" ng-click="sendSupportMail">EMail (support)</a>
+            </div>
+            <div class="item">
+                <a class="button button-stable" ng-href="{{hrefFeedback}}" ng-click="sendFeedbackMail">EMail (feedback)</a>
+            </div>
+        </div>
+        <br>
+        <h4>Terms & Conditions</h4>
+
+        <div class="list">
+            <div class="item">
+                Amazingly exciting and entertaining legal stuff:
+            </div>
+            <div class="item">
+                <button class="button button-stable">open Terms & Conditions</button>
             </div>
         </div>
     </ion-content>
