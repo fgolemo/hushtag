@@ -112,3 +112,6 @@ div.item-divider.item-divider-bordered {
     white-space: normal !important;
 }
 
+button {
+    font-family: "RobotoDraft","Roboto","Helvetica Neue","Segoe UI",sans-serif !important;
+}

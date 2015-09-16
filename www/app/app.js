@@ -129,6 +129,24 @@ angular.module('hushtag', [
                 }
             })
 
+            .state('app.help-rules', {
+                url: "/help/rules",
+                views: {
+                    'menuContent': {
+                        templateUrl: "app/help/rules.html"
+                    }
+                }
+            })
+
+            .state('app.help-tc', {
+                url: "/help/terms-conditions",
+                views: {
+                    'menuContent': {
+                        templateUrl: "app/help/tc.html"
+                    }
+                }
+            })
+
             .state('app.settings', {
                 url: "/settings",
                 views: {
