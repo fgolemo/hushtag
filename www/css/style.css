@@ -115,3 +115,7 @@ div.item-divider.item-divider-bordered {
 button {
     font-family: "RobotoDraft","Roboto","Helvetica Neue","Segoe UI",sans-serif !important;
 }
+
+.item.no-top-pad {
+    padding-top: 0px;
+}
