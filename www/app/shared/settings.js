@@ -15,7 +15,7 @@ sharedModule.service('Settings', [function () {
     };
     this.hushtagInfoBoxLimit = 40;
     this.mails = {
-        support:{
+        support: {
             to: 'support@hushtag.co.uk',
             subject: 'Support request for Hushtag app',
             body: 'Hey Hushtag team,\n\nHow are you doing?\n\nI was wondering if you could help me with this issue:\n\n'
