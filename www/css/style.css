@@ -92,7 +92,11 @@
 /*}*/
 
 .list .item-thumbnail-left, .list .item-thumbnail-left .item-content {
-    min-height: 100px;
+    /*min-height: 100px;*/
+}
+.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+    max-height: 70px;
+    max-width: 70px;
 }
 
 .hide {
