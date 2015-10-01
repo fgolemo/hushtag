@@ -18,6 +18,7 @@ angular.module('hushtag', [
     'hushtag.votes',
     'hushtag.help',
     'hushtag.hushtags',
+    'hushtag.stories',
     'ionic-material'
 ])
 
@@ -174,10 +175,25 @@ angular.module('hushtag', [
                         controller: 'PlaylistCtrl'
                     }
                 }
-            });
+            })
+
+        ;
 
         naviCreatorProvider.addNaviFor('event', 'app.home', $stateProvider);
         naviCreatorProvider.addNaviFor('hushtag', 'app.home', $stateProvider);
+
+        $stateProvider
+            .state('app.home.stories', {
+                url: "/stories/:hushtag",
+                views: {
+                    'hushtags': {
+                        templateUrl: "app/stories/stories.html",
+                        controller: 'StoriesCtrl'
+                    }
+                }
+            })
+        ;
+
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home/news');

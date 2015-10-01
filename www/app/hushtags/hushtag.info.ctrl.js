@@ -1,5 +1,5 @@
 hushtagsModule
-    .controller('HushtagInfoCtrl', function ($scope, HushtagsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate, Login) {
+    .controller('HushtagInfoCtrl', function ($scope, HushtagsManager, $stateParams, Resolver, moment, Modal, $ionicSlideBoxDelegate, Login, $state) {
         var objID = $stateParams.hushtag;
         var loadobj = function(forced, cb) {
             HushtagsManager.m.get(objID, forced).then(function (obj) {
@@ -31,5 +31,7 @@ hushtagsModule
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };
+        console.log(angular.toJson($state.get()));
+
     })
 ;
