@@ -42,11 +42,10 @@
             <hushtag-info-box for="safety"></hushtag-info-box>
             <hushtag-info-box for="legality"></hushtag-info-box>
 
-        </div>
-
-        <div class="padding">
-            <h3>Stories</h3>
-            <a href="#/app/home/stories/{{hushtag.id}}">open stories</a>
+            <a class="item" href="#/app/home/stories/{{hushtag.id}}">
+                Stories
+                <span class="badge badge-assertive">{{hushtag.stories.length}}</span>
+            </a>
         </div>
 
         <div class="padding">
