@@ -31,7 +31,5 @@ hushtagsModule
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };
-        console.log(angular.toJson($state.get()));
-
     })
 ;

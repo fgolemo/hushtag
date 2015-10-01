@@ -7,6 +7,7 @@ eventsModule.factory('Event', ["moment", function (moment) {
     }
     Event.prototype = {
         id: "",     // unique identifier, either int (unlikely) or string.
+        name: "",           // short string
         start: new Date(),  // Date for start
         //start_time: new Date(),// Time for start
         end: new Date(),    // Date for end
@@ -52,6 +53,7 @@ eventsModule.factory('Event', ["moment", function (moment) {
                 this.hasEnd = true;
             }
             this.startDate = this.start.toDate();
+
         },
         pack: function () {
             this.start = moment(this.startDate).format();
