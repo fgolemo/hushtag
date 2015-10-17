@@ -9,7 +9,7 @@ storiesModule.factory('Story', ["moment", function (moment) {
     Story.prototype = {
         id: "",     // unique identifier, either int (unlikely) or string.
         owner: "",      // either string (if the event wasn't created by a user) or user ID
-        datetime: "", // timestamp
+        created: "", // timestamp
         hushtag: "", // id of a Hushtag
         dosage: "", // short string, how much was consumed
         effect_positive: "", // long text

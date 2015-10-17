@@ -25,6 +25,11 @@ hushtagsModule.factory('Hushtag', [function () {
                 attribute: "family",
                 type: "Hushtag",
                 quantity: "many"
+            },
+            {
+                attribute: "stories",
+                type: "Story",
+                quantity: "many"
             }
         ],
 

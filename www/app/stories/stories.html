@@ -1,5 +1,18 @@
 <ion-view view-title="Stories" hide-back-button="false">
     <ion-content class="padding">
-        <p>seems to work</p>
+        <div class="list">
+            <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
+            <a ng-repeat="story in hushtag.storiesResolved | orderBy:'-created'"
+               class="item item-thumbnail-left"
+               href="#/app/home/stories/{{hushtag.id}}/{{story.id}}">
+                <img ng-src="{{story.pics[0]}}">
+
+                <h2><time title="{{ story.created | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">
+                    {{ story.created | amCalendar }}
+                </time></h2>
+                <span class="fat">good:</span>&nbsp;<span class="">{{story.effect_positive|limitTo:90}}</span><br>
+                <span class="fat">bad:</span>&nbsp;<span class="">{{story.effect_negative|limitTo:90}}</span><br>
+            </a>
+        </div>
     </ion-content>
 </ion-view>

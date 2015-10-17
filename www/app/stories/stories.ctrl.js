@@ -1,25 +1,23 @@
 storiesModule
     .controller('StoriesCtrl',
-    ["$scope", "StoriesManager", "Resolver", "Login",
-        function ($scope, StoriesManager, Resolver, Login) {
-            //$scope.login = Login;
-            //var loadData = function(force, cb) {
-            //    EventsManager.m.loadAll(force).then(function (events) {
-            //        for (var i in events) {
-            //            Resolver.loadRefs(events[i], ["location"]);
-            //        }
-            //        $scope.events = events;
-            //        if (cb) {
-            //            cb();
-            //        }
-            //    });
-            //};
-            //loadData(false);
-            //$scope.doRefresh = function() {
-            //    loadData(true, function() {
-            //        $scope.$broadcast('scroll.refreshComplete');
-            //    });
-            //}
+    ["$scope", "StoriesManager", "Resolver", "Login", "$stateParams", "HushtagsManager",
+        function ($scope, StoriesManager, Resolver, Login, $stateParams, HushtagsManager) {
+            var objID = $stateParams.hushtag;
+            var loadobj = function(forced, cb) {
+                HushtagsManager.m.get(objID, forced).then(function (obj) {
+                    Resolver.loadRefs(obj, ["stories"]);
+                    $scope.hushtag = obj;
+                    if (cb) {
+                        cb();
+                    }
+                });
+            };
+            loadobj(false);
+            $scope.doRefresh = function() {
+                loadobj(true, function() {
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+            };
         }
     ]
 );
