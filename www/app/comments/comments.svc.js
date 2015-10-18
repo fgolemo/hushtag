@@ -13,7 +13,6 @@ commentsModule.factory('Comment', ["moment", function (moment) {
         downvotes: 0,   // integer of downvotes
         hasVoted: false,// boolean, indicator if the user himself has voted
         owner: "",      // user ID
-        //pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
         refs: [
             {

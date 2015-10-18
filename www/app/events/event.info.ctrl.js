@@ -33,6 +33,9 @@ eventsModule
             $scope.modal.show();
         };
         $scope.canEdit = function () {
+            if (!$scope.event || $scope.event == {} || $scope.event == null) {
+                return false;
+            }
             return Login.canEdit($scope.event.owner, 0);
         };
         $scope.doRefresh = function() {

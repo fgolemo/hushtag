@@ -45,18 +45,6 @@
 
             <vote-info on="event"></vote-info>
         </div>
-
-        <h3><i class="icon ion-speakerphone"></i> Comments</h3>
-
-        <div class="ĺist">
-            <div class="item" ng-repeat="comment in event.commentsResolved">
-                <p>
-                    <span class="fat">{{comment.ownerResolved.name||comment.owner}}:</span>
-                    <span>{{comment.content}}</span>
-                </p>
-            </div>
-        </div>
-
-
+        <comments-list for="event"></comments-list>
     </ion-content>
 </ion-view>
