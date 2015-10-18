@@ -176,13 +176,6 @@ angular.module('hushtag', [
                     }
                 }
             })
-
-        ;
-
-        naviCreatorProvider.addNaviFor('event', 'app.home', $stateProvider);
-        naviCreatorProvider.addNaviFor('hushtag', 'app.home', $stateProvider);
-
-        $stateProvider
             .state('app.home.stories', {
                 url: "/stories/:hushtag",
                 views: {
@@ -192,7 +185,19 @@ angular.module('hushtag', [
                     }
                 }
             })
+            .state('app.home.story', {
+                url: "/stories/:hushtag/:story",
+                views: {
+                    'hushtags': {
+                        templateUrl: "app/stories/story.info.html",
+                        controller: 'StoryInfoCtrl'
+                    }
+                }
+            })
         ;
+
+        naviCreatorProvider.addNaviFor('event', 'app.home', $stateProvider);
+        naviCreatorProvider.addNaviFor('hushtag', 'app.home', $stateProvider);
 
 
         // if none of the above states are matched, use this as the fallback

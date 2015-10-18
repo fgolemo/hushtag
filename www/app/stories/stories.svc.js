@@ -33,6 +33,11 @@ storiesModule.factory('Story', ["moment", function (moment) {
                 attribute: "event",
                 type: "Event",
                 quantity: "one"
+            },
+            {
+                attribute: "owner",
+                type: "User",
+                quantity: "one"
             }
         ],
 
@@ -41,11 +46,11 @@ storiesModule.factory('Story', ["moment", function (moment) {
             this.unpack();
         },
         unpack: function () {
-            this.datetime = moment(this.datetime);
-            this.datetimeDate = this.datetime.toDate();
+            this.created = moment(this.created);
+            this.createdDate = this.created.toDate();
         },
         pack: function () {
-            this.datetime = moment(this.datetimeDate).format();
+            this.created = moment(this.createdDate).format();
         }
     };
     return Story;

@@ -28,17 +28,6 @@ locationsModule.factory('Location', [function () {
         update: function () {
             //$http.put('ourserver/books/' + bookId, this);
         }
-        //getImageUrl: function(width, height) {
-        //    return 'our/image/service/' + this.book.id + '/width/height';
-        //},
-        //isAvailable: function() {
-        //    if (!this.book.stores || this.book.stores.length === 0) {
-        //        return false;
-        //    }
-        //    return this.book.stores.some(function(store) {
-        //        return store.quantity > 0;
-        //    });
-        //}
     };
     return Location;
 }]);

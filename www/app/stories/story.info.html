@@ -1,0 +1,54 @@
+<ion-view view-title="{{story.hushtagResolved.name}} Story">
+    <ion-content>
+        <div class="list">
+            <div class="item">
+                Taken
+                <span class="item-note">
+                    {{ story.created | amCalendar }}
+                    <span ng-show="story.eventResolved">
+                        @ {{story.eventResolved.name}}
+                        ({{story.eventResolved.getLocationString()}})
+                    </span>
+                </span>
+            </div>
+            <div class="item">
+                By
+                <span class="item-note">
+                    {{ story.ownerResolved.name }}
+                </span>
+            </div>
+            <div class="item" ng-show="story.pics.length > 0">
+                <ion-scroll direction="x">
+                    <img ng-repeat="pic in story.pics"
+                         ng-src="{{pic}}"
+                         ng-click="showImages($index)"
+                         class="image-list-thumb"/>
+                </ion-scroll>
+            </div>
+            <div class="item">
+                Dosage
+                <span class="item-note">
+                    {{story.dosage}}
+                </span>
+            </div>
+            <div class="item">
+                Effects (good)
+                <span class="item-note">
+                    {{story.effect_positive}}
+                </span>
+            </div>
+            <div class="item">
+                Effects (bad)
+                <span class="item-note">
+                    {{story.effect_negative}}
+                </span>
+            </div>
+            <div class="item">
+                Effect duration
+                <span class="item-note">
+                    {{story.effect_duration}}
+                </span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

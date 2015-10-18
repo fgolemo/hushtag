@@ -61,6 +61,14 @@ eventsModule.factory('Event', ["moment", function (moment) {
             if (!this.hasEnd) {
                 this.end = null;
             }
+        },
+        getLocationString: function() {
+            if (this.locationResolved) {
+                return this.locationResolved.name + ", " + this.locationResolved.city + ", " +
+                    this.locationResolved.countryCode;
+            } else {
+                return "no location provided";
+            }
         }
     };
     return Event;

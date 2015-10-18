@@ -21,8 +21,7 @@
 
             <p>{{starts_text}} {{ event.start | amCalendar }}</p>
 
-            <p>{{event.locationResolved.name + ", " + event.locationResolved.city + ", " +
-                event.locationResolved.countryCode || "no description provided"}}</p>
+            <p>{{event.getLocationString()}}</p>
         </div>
         <div class="list">
             <!--<div class="item item-icon-left">-->
