@@ -35,12 +35,14 @@ sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'Comments
         this._resolveSingle = function (obj, ref, recursive) {
             //TODO: check if ref.type is actually among the managers, otherwise throw exeption
             var self = this;
-            this._managers[ref.type].m.get(obj[ref.attribute]).then(function (result) {
-                if (recursive) {
-                    self.loadRefs(result, null, false); //TODO: handle recursion better, like add a depth counter
-                }
-                obj[ref.attribute + "Resolved"] = result;
-            });
+            if (obj[ref.attribute] && obj[ref.attribute] != null && obj[ref.attribute] != "") {
+                this._managers[ref.type].m.get(obj[ref.attribute]).then(function (result) {
+                    if (recursive) {
+                        self.loadRefs(result, null, false); //TODO: handle recursion better, like add a depth counter
+                    }
+                    obj[ref.attribute + "Resolved"] = result;
+                });
+            }
         };
         this._resolveMulti = function (obj, ref, recursive) {
             var self = this;

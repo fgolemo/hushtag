@@ -79,11 +79,15 @@ sharedModule.factory('Manager',
                 /* Public Methods */
                 this.get = function (id, force) {
                     var deferred = $q.defer();
-                    var instance = this._search(id);
-                    if (instance && (!force || force == null)) {
-                        deferred.resolve(instance);
+                    if (!id || id == null || id == "") {
+                        deferred.reject();
                     } else {
-                        this._load(id, deferred);
+                        var instance = this._search(id);
+                        if (instance && (!force || force == null)) {
+                            deferred.resolve(instance);
+                        } else {
+                            this._load(id, deferred);
+                        }
                     }
                     return deferred.promise;
                 };
@@ -94,6 +98,9 @@ sharedModule.factory('Manager',
                     var counterTotal = ids.length;
                     for (var i in ids) {
                         var id = ids[i];
+                        if (!id || id == null || id == "") {
+                            continue;
+                        }
                         var instance = this._search(id);
                         if (instance) {
                             if (instance != null) {
