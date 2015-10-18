@@ -1,5 +1,5 @@
-commentsModule.directive('commentCreate', ['$ionicPopup', 'Login', 'Comment',
-    function ($ionicPopup, Login, Comment) {
+commentsModule.directive('commentCreate', ['$ionicPopup', 'Login', 'Comment', '$timeout',
+    function ($ionicPopup, Login, Comment, $timeout) {
         return {
             restrict: 'E',
             replace: 'true',
@@ -10,6 +10,10 @@ commentsModule.directive('commentCreate', ['$ionicPopup', 'Login', 'Comment',
                 scope.loadCommentBox = function() {
                     scope.showCommentBox = true;
                     scope.newComment = new Comment();
+                    $timeout(function() {
+                        document.getElementById("comment-create-box").focus();
+                    },750);
+
                 }
             }
         };
