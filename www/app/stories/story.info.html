@@ -14,7 +14,7 @@
             <div class="item">
                 By
                 <span class="item-note">
-                    {{ story.ownerResolved.name }}
+                    {{ story.ownerResolved.name || "anon" }}
                 </span>
             </div>
             <div class="item" ng-show="story.pics.length > 0">
@@ -50,5 +50,7 @@
                 </span>
             </div>
         </div>
+        <comment-create for="story"></comment-create>
+        <comments-list for="story"></comments-list>
     </ion-content>
 </ion-view>

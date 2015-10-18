@@ -1,5 +1,5 @@
 <div class="card" ng-repeat="comment in commentObj.commentsResolved | orderBy: '-created'">
-    <div class="item">
+    <div class="item card-background">
         <strong>{{comment.ownerResolved.name||comment.owner}}:</strong>&nbsp;{{comment.content}}
         <div class="card-footer text-right">
             <i class="icon ion-arrow-up-a balanced"></i> {{comment.upvotes}}

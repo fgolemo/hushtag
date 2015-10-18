@@ -94,6 +94,7 @@
 .list .item-thumbnail-left, .list .item-thumbnail-left .item-content {
     /*min-height: 100px;*/
 }
+
 .item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
     max-height: 70px;
     max-width: 70px;
@@ -103,7 +104,9 @@
     display: none !important;
 }
 
-textarea.elastic {resize: none;}
+textarea.elastic {
+    resize: none;
+}
 
 div.item-divider.item-divider-bordered {
     border-bottom: 1px solid #414141 !important;
@@ -117,9 +120,17 @@ div.item-divider.item-divider-bordered {
 }
 
 button {
-    font-family: "RobotoDraft","Roboto","Helvetica Neue","Segoe UI",sans-serif !important;
+    font-family: "RobotoDraft", "Roboto", "Helvetica Neue", "Segoe UI", sans-serif !important;
 }
 
 .item.no-top-pad {
     padding-top: 0px;
+}
+
+.comment-create .item label {
+    padding: 0px;
+}
+
+.item.card-background {
+    background-color: #f8f8f8;
 }
