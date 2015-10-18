@@ -37,7 +37,7 @@ sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'Comments
             var self = this;
             this._managers[ref.type].m.get(obj[ref.attribute]).then(function (result) {
                 if (recursive) {
-                    self.loadRefs(result, null, true);
+                    self.loadRefs(result, null, false); //TODO: handle recursion better, like add a depth counter
                 }
                 obj[ref.attribute + "Resolved"] = result;
             });
