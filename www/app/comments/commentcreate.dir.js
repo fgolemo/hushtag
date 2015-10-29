@@ -7,7 +7,6 @@ commentsModule.directive('commentCreate', ['$ionicPopup', 'Login', 'Comment', '$
             link: function (scope, elem, attrs) {
                 scope.showCommentBox = false;
                 scope.loadCommentBox = function () {
-                    console.log("DBG: click");
                     scope.showCommentBox = true;
                     scope.newComment = new Comment();
                     $timeout(function () {
@@ -16,11 +15,11 @@ commentsModule.directive('commentCreate', ['$ionicPopup', 'Login', 'Comment', '$
                 };
                 scope.sendComment = function () {
                     scope.newComment.owner = Login.user.id;
-                    console.log("parent:");
-                    console.dir(scope.obj);
                     CommentsManager.createComment(scope.newComment, scope.obj, attrs.for.capitalize()).then(function (res) {
-                        console.log("DBG: got feedback after creating comment");
-                        console.dir(res);
+                        if (res.status && res.status == "success") {
+                            scope.newComment = new Comment();
+                            scope.showCommentBox = false;
+                        }
                     }, function(err) {
                         console.log("ERR: there was a problem adding the comment:");
                         console.dir(err);

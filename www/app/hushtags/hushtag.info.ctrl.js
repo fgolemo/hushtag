@@ -4,7 +4,7 @@ hushtagsModule
         var loadobj = function(forced, cb) {
             HushtagsManager.m.get(objID, forced).then(function (obj) {
                 Resolver.loadRefs(obj, null, true);
-                $scope.hushtag = obj;
+                $scope.obj = obj;
                 HushtagsManager.m.getComments(objID);
                 if (cb) {
                     cb();
@@ -22,8 +22,8 @@ hushtagsModule
             $scope.modal.show();
         };
         $scope.canEdit = function () {
-            if ($scope.hushtag) {
-                return Login.canEdit($scope.hushtag.owner, 1);
+            if ($scope.obj) {
+                return Login.canEdit($scope.obj.owner, 1);
             }
             return false;
         };

@@ -57,8 +57,6 @@ sharedModule.factory('Manager',
                         parent.comments = [];
                     }
                     parent.comments.push(c);
-                    console.log("DBG: post-comment-add:");
-                    console.dir(parent);
                     return parent;
                 };
                 this._search = function (id) {
@@ -79,8 +77,6 @@ sharedModule.factory('Manager',
                     var scope = this;
                     $http.get(this.server + objName.toLowerCase() + '/' + id + '/comments')
                         .success(function (comments) {
-                            console.log("DBG: received comments");
-                            console.dir(comments);
                             for (var i in comments) {
                                 scope._retrieveComment(comments[i], parent);
                             }
@@ -123,7 +119,6 @@ sharedModule.factory('Manager',
                     } else {
                         var instance = this._search(id);
                         if (instance.comments && (!force || force == null)) {
-                            console.log("DBG: comments exist, returning cached obj");
                             deferred.resolve(instance);
                         } else {
                             this._loadComments(id, deferred, instance);

@@ -1,10 +1,10 @@
-<ion-view view-title="{{hushtag.name}}">
+<ion-view view-title="{{obj.name}}">
     <ion-nav-title>
-        {{hushtag.name}}
+        {{obj.name}}
     </ion-nav-title>
     <button
             class="button button-fab button-energized icon ion-edit button-fab-bottom-right"
-            go-click="/app/home/hushtags/{{hushtag.id}}/edit"
+            go-click="/app/home/hushtags/{{obj.id}}/edit"
             ng-show="canEdit()">
     </button>
     <ion-content class="">
@@ -12,29 +12,35 @@
         </ion-refresher>
 
         <div class="mid-bar dark-bg z1 padding">
-            <h3><a class="light">{{hushtag.name}}</a></h3>
+            <h3><a class="light">{{obj.name}}</a></h3>
 
             <p>family:
-                <span ng-if="hushtag.family.length == 0"> --- </span>
-                <span ng-if="hushtag.family.length > 0"
-                      ng-repeat="member in hushtag.familyResolved">
+                <span ng-if="obj.family.length == 0"> --- </span>
+                <span ng-if="obj.family.length > 0"
+                      ng-repeat="member in obj.familyResolved">
                     {{member.name}}{{$last ? '' : ', '}}
                 </span>
             </p>
 
-            <p>also known as: {{hushtag.synonyms.sort().join(', ')}}</p>
+            <p>also known as: {{obj.synonyms.sort().join(', ')}}</p>
 
         </div>
 
         <div class="list">
             <div class="item">
                 <ion-scroll direction="x">
-                    <img ng-repeat="pic in hushtag.pics"
+                    <img ng-repeat="pic in obj.pics"
                          ng-src="{{pic}}"
                          ng-click="showImages($index)"
                          class="image-list-thumb"/>
                 </ion-scroll>
             </div>
+
+            <a class="item" href="#/app/home/stories/{{obj.id}}">
+                Stories&nbsp;
+                <i class="icon ion-arrow-right-b"></i>
+                <span class="badge badge-royal">{{obj.stories.length}}</span>
+            </a>
 
             <hushtag-info-box for="description"></hushtag-info-box>
             <hushtag-info-box for="forms"></hushtag-info-box>
@@ -42,22 +48,11 @@
             <hushtag-info-box for="safety"></hushtag-info-box>
             <hushtag-info-box for="legality"></hushtag-info-box>
 
-            <a class="item" href="#/app/home/stories/{{hushtag.id}}">
-                Stories
-                <span class="badge badge-assertive">{{hushtag.stories.length}}</span>
-            </a>
         </div>
 
         <div class="padding">
-            <h3>Comments</h3>
-            <div class="ĺist">
-                <div class="item" ng-repeat="comment in event.commentsResolved">
-                    <p>
-                        <span class="fat">{{comment.ownerResolved.name||comment.owner}}:</span>
-                        <span>{{comment.content}}</span>
-                    </p>
-                </div>
-            </div>
+            <comment-create for="hushtag"></comment-create>
+            <comments-list></comments-list>
         </div>
 
 
