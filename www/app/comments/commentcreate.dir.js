@@ -5,26 +5,27 @@ commentsModule.directive('commentCreate', ['$ionicPopup', 'Login', 'Comment', '$
             replace: 'true',
             templateUrl: 'app/comments/commentcreate.dir.html',
             link: function (scope, elem, attrs) {
-                scope.$on("objLoaded", function () {
-                    scope.commentObj = scope[attrs.for];
-                    scope.showCommentBox = false;
-                    scope.loadCommentBox = function () {
-                        scope.showCommentBox = true;
-                        scope.newComment = new Comment();
-                        $timeout(function () {
-                            document.getElementById("comment-create-box").focus();
-                        }, 750);
-                    };
-                    scope.sendComment = function () {
-                        scope.newComment.owner = Login.user.id;
-                        console.log("parent:");
-                        console.dir(scope.commentObj);
-                        CommentsManager.m.createComment(scope.newComment, scope.commentObj, attrs.for.capitalize(), function (res) {
-                            console.log("got feedback after creating comment");
-                            console.dir(res);
-                        });
-                    }
-                });
+                scope.showCommentBox = false;
+                scope.loadCommentBox = function () {
+                    console.log("DBG: click");
+                    scope.showCommentBox = true;
+                    scope.newComment = new Comment();
+                    $timeout(function () {
+                        document.getElementById("comment-create-box").focus();
+                    }, 750);
+                };
+                scope.sendComment = function () {
+                    scope.newComment.owner = Login.user.id;
+                    console.log("parent:");
+                    console.dir(scope.obj);
+                    CommentsManager.createComment(scope.newComment, scope.obj, attrs.for.capitalize()).then(function (res) {
+                        console.log("DBG: got feedback after creating comment");
+                        console.dir(res);
+                    }, function(err) {
+                        console.log("ERR: there was a problem adding the comment:");
+                        console.dir(err);
+                    });
+                }
             }
         };
     }]);
