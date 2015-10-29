@@ -1,25 +1,25 @@
-<ion-view view-title="{{story.hushtagResolved.name}} Story">
+<ion-view view-title="{{obj.hushtagResolved.name}} Story">
     <ion-content>
         <div class="list">
             <div class="item">
                 Taken
                 <span class="item-note">
-                    {{ story.created | amCalendar }}
-                    <span ng-show="story.eventResolved">
-                        @ {{story.eventResolved.name}}
-                        ({{story.eventResolved.getLocationString()}})
+                    {{ obj.created | amCalendar }}
+                    <span ng-show="obj.eventResolved">
+                        @ {{obj.eventResolved.name}}
+                        ({{obj.eventResolved.getLocationString()}})
                     </span>
                 </span>
             </div>
             <div class="item">
                 By
                 <span class="item-note">
-                    {{ story.ownerResolved.name || "anon" }}
+                    {{ obj.ownerResolved.name || "anon" }}
                 </span>
             </div>
-            <div class="item" ng-show="story.pics.length > 0">
+            <div class="item" ng-show="obj.pics.length > 0">
                 <ion-scroll direction="x">
-                    <img ng-repeat="pic in story.pics"
+                    <img ng-repeat="pic in obj.pics"
                          ng-src="{{pic}}"
                          ng-click="showImages($index)"
                          class="image-list-thumb"/>
@@ -28,29 +28,29 @@
             <div class="item">
                 Dosage
                 <span class="item-note">
-                    {{story.dosage}}
+                    {{obj.dosage}}
                 </span>
             </div>
             <div class="item">
                 Effects (good)
                 <span class="item-note">
-                    {{story.effect_positive}}
+                    {{obj.effect_positive}}
                 </span>
             </div>
             <div class="item">
                 Effects (bad)
                 <span class="item-note">
-                    {{story.effect_negative}}
+                    {{obj.effect_negative}}
                 </span>
             </div>
             <div class="item">
                 Effect duration
                 <span class="item-note">
-                    {{story.effect_duration}}
+                    {{obj.effect_duration}}
                 </span>
             </div>
         </div>
         <comment-create for="story"></comment-create>
-        <comments-list for="story"></comments-list>
+        <comments-list></comments-list>
     </ion-content>
 </ion-view>

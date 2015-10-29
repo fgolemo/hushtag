@@ -12,7 +12,7 @@ storiesModule
                         Resolver.loadRefs(obj.commentsResolved, null, false);
                     }
                 });
-                $scope.story = obj;
+                $scope.obj = obj;
                 $scope.$broadcast("objLoaded");
                 StoriesManager.m.getComments(objID);
                 if (cb) {
