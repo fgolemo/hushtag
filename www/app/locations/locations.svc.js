@@ -12,7 +12,6 @@ locationsModule.factory('Location', [function () {
         countryCode: "",   // name of the establishment
         description: "",    // medium string, description of the event, can be multiline
         pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
-        comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
         refs: [

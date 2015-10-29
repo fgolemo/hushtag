@@ -7,7 +7,7 @@ votesModule.directive('voteInfo', ['Votes', '$ionicPlatform', '$cordovaToast', '
             link: function (scope, elem, attrs) {
                 scope.login = Login;
                 scope.$on("objLoaded", function () {
-                    scope.obj = scope[attrs.on];
+                    //scope.obj = scope[attrs.on];
                     var hasVotedChecker = Votes.hasVoted(attrs.on, scope.obj.id);
                     if (hasVotedChecker != null) {
                         hasVotedChecker.then(function (response) {

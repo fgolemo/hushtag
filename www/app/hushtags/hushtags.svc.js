@@ -16,7 +16,6 @@ hushtagsModule.factory('Hushtag', [function () {
         synonyms: [],// list of strings of other known aliases, ["Amp", "Giga", "headsmash"]
         forms: "no forms info provided",  // short string, common form(s), "usually pills, rarely liquid"
         stories: [],   // list of IDs of HushtagStories(s), [123, 456]
-        comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
         owner: "",  // either string (if the event wasn't created by a user) or user ID

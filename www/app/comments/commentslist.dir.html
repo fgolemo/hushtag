@@ -1,11 +1,14 @@
-<div class="card" ng-repeat="comment in commentObj.commentsResolved | orderBy: '-created'">
+<div class="card" ng-repeat="comment in $parent.obj.comments | orderBy: '-created'">
     <div class="item card-background">
         <strong>{{comment.ownerResolved.name||comment.owner}}:</strong>&nbsp;{{comment.content}}
         <div class="card-footer text-right">
-            <i class="icon ion-arrow-up-a balanced"></i> {{comment.upvotes}}
-            <i class="icon ion-arrow-down-a assertive"></i> {{comment.downvotes}}
             <div class="pull-left">
                 <i class="icon ion-clock"></i> {{comment.created | amCalendar}}
+            </div>
+
+            <div class="pull-right">
+                <i class="icon ion-arrow-up-a balanced"></i> {{comment.upvotes}}
+                <i class="icon ion-arrow-down-a assertive"></i> {{comment.downvotes}}
             </div>
         </div>
     </div>

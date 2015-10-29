@@ -5,6 +5,7 @@ hushtagsModule
             HushtagsManager.m.get(objID, forced).then(function (obj) {
                 Resolver.loadRefs(obj, null, true);
                 $scope.hushtag = obj;
+                HushtagsManager.m.getComments(objID);
                 if (cb) {
                     cb();
                 }

@@ -4,8 +4,14 @@ commentsModule.directive('commentsList', ['$ionicPopup', 'Login',
             restrict: 'E',
             replace: 'true',
             templateUrl: 'app/comments/commentslist.dir.html',
+            scope: {
+                obj: '='
+            },
             link: function (scope, elem, attrs) {
-                scope.commentObj = scope[attrs.for];
+                scope.$watch('obj', function(value) {
+                    console.log("DBG: got dir update");
+                    console.dir(value);
+                });
             }
         };
     }]);

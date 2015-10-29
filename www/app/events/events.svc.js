@@ -20,7 +20,6 @@ eventsModule.factory('Event', ["moment", function (moment) {
         owner: "",      // either string (if the event wasn't created by a user) or user ID
         //genre: "",    // nope, instead we make the users chose from a list of genre tags
         pics: [],   // list of URLs of pics, ["/img/amphetamine1.png", "/img/amphetamine2.png"]
-        comments: [],// list of IDs of comments on this entry, [88, 23, 189]
         tags: [],   // list of IDs of tags on this entry, [77, 433, 182]
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
         upvotes: 0,   // integer of upvotes
@@ -32,11 +31,6 @@ eventsModule.factory('Event', ["moment", function (moment) {
                 attribute: "location",
                 type: "Location",
                 quantity: "one"
-            },
-            {
-                attribute: "comments",
-                type: "Comment",
-                quantity: "many"
             }
         ],
 

@@ -9,6 +9,13 @@ sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'Comments
             "User": UsersManager
             //TODO: add other managers
         };
+        this.getManager = function (name) {
+            if (name in this._managers) {
+                return this._managers[name];
+            } else {
+                return false;
+            }
+        };
         this.loadRefs = function (obj, refs, recursive, cb) {
             if (refs != null) {
                 var out = [];
@@ -41,7 +48,7 @@ sharedModule.service('Resolver', ['EventsManager', 'LocationsManager', 'Comments
                     if (recursive) {
                         self.loadRefs(result, null, false, cb); //TODO: handle recursion better, like add a depth counter
                     } else {
-                        if (cb){
+                        if (cb) {
                             cb(ref.attribute + "Resolved");
                         }
                     }

@@ -1,10 +1,10 @@
-<ion-view view-title="{{event.name}}">
+<ion-view view-title="{{obj.name}}">
     <ion-nav-title>
-        {{event.name}}
+        {{obj.name}}
     </ion-nav-title>
     <button
             class="button button-fab button-energized icon ion-edit button-fab-bottom-right"
-            go-click="/app/home/events/{{event.id}}/edit"
+            go-click="/app/home/events/{{obj.id}}/edit"
             ng-show="canEdit()">
     </button>
     <ion-content class="">
@@ -17,11 +17,11 @@
             </div>
         </div>
         <div class="mid-bar dark-bg z1 padding">
-            <h3><a class="light">{{event.name}}</a></h3>
+            <h3><a class="light">{{obj.name}}</a></h3>
 
-            <p>{{starts_text}} {{ event.start | amCalendar }}</p>
+            <p>{{starts_text}} {{ obj.start | amCalendar }}</p>
 
-            <p>{{event.getLocationString()}}</p>
+            <p>{{obj.getLocationString()}}</p>
         </div>
         <div class="list">
             <!--<div class="item item-icon-left">-->
@@ -31,7 +31,7 @@
 
             <div class="item">
                 <ion-scroll direction="x">
-                    <img ng-repeat="pic in event.pics"
+                    <img ng-repeat="pic in obj.pics"
                          ng-src="{{pic}}"
                          ng-click="showImages($index)"
                          class="image-list-thumb"/>
@@ -40,11 +40,11 @@
 
             <div class="item item-icon-left">
                 <i class="icon ion-information"></i>
-                {{event.description || "no description provided"}}
+                {{obj.description || "no description provided"}}
             </div>
 
             <vote-info on="event"></vote-info>
         </div>
-        <comments-list for="event"></comments-list>
+        <comments-list></comments-list>
     </ion-content>
 </ion-view>

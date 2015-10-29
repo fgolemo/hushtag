@@ -8,8 +8,13 @@ storiesModule
                     if (resolvedName == "eventResolved") { //load location for event
                         Resolver.loadRefs(obj.eventResolved, null, false);
                     }
+                    if (resolvedName == "commentsResolved") { //load usernames for comments
+                        Resolver.loadRefs(obj.commentsResolved, null, false);
+                    }
                 });
                 $scope.story = obj;
+                $scope.$broadcast("objLoaded");
+                StoriesManager.m.getComments(objID);
                 if (cb) {
                     cb();
                 }

@@ -8,7 +8,7 @@ eventsModule
         var loadEvent = function(forced, cb) {
             EventsManager.m.get(eventID, forced).then(function (event) {
                 Resolver.loadRefs(event, null, true);
-                $scope.event = event;
+                $scope.obj = event;
                 $scope.starts_text = ( moment(event.start) < moment(new Date()) ) ? "started" : "starts";
                 if (voterReady) {
                     $scope.$broadcast("objLoaded");
@@ -17,6 +17,7 @@ eventsModule
                         $scope.$broadcast("objLoaded");
                     });
                 }
+                EventsManager.m.getComments(eventID);
                 if (cb) {
                     cb();
                 }
@@ -33,10 +34,10 @@ eventsModule
             $scope.modal.show();
         };
         $scope.canEdit = function () {
-            if (!$scope.event || $scope.event == {} || $scope.event == null) {
+            if (!$scope.obj || $scope.obj == {} || $scope.obj == null) {
                 return false;
             }
-            return Login.canEdit($scope.event.owner, 0);
+            return Login.canEdit($scope.obj.owner, 0);
         };
         $scope.doRefresh = function() {
             loadEvent(true, function() {
@@ -44,8 +45,8 @@ eventsModule
             });
         };
         $scope.getHeroStyle = function () {
-            if ($scope.event && JSON.stringify($scope.event) != "{}" && $scope.event.header && $scope.event.header != "") {
-                return "background-image: url('"+$scope.event.header+"')";
+            if ($scope.obj && JSON.stringify($scope.obj) != "{}" && $scope.obj.header && $scope.obj.header != "") {
+                return "background-image: url('"+$scope.obj.header+"')";
             } else {
                 return "";
             }

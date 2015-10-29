@@ -5,7 +5,8 @@
         </label>
     </div>
     <div class="item card-background" ng-show="showCommentBox">
-        <label class="item item-input">
+        <form ng-submit="sendComment()">
+            <label class="item item-input">
             <textarea
                     id="comment-create-box"
                     ng-model="newComment.content"
@@ -15,11 +16,13 @@
                     autofocus
             >
             </textarea>
-        </label>
-        <div class="comment-send-button">
-            <button class="button button-icon icon ion-android-send footer-btn" type="submit"
-                    ng-disabled="!newComment.content || newComment.content === ''">
-            </button>
-        </div>
+            </label>
+
+            <div class="comment-send-button">
+                <button class="button button-icon icon ion-android-send footer-btn" type="submit"
+                        ng-disabled="!newComment.content || newComment.content === ''">
+                </button>
+            </div>
+        </form>
     </div>
 </div>

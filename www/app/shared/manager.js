@@ -51,6 +51,16 @@ sharedModule.factory('Manager',
 
                     return instance;
                 };
+                this._retrieveComment = function (comment, parent) {
+                    var c = new Comment(comment);
+                    if (!parent.comments) {
+                        parent.comments = [];
+                    }
+                    parent.comments.push(c);
+                    console.log("DBG: post-comment-add:");
+                    console.dir(parent);
+                    return parent;
+                };
                 this._search = function (id) {
                     return this._pool[id];
                 };
@@ -60,6 +70,21 @@ sharedModule.factory('Manager',
                         .success(function (data) {
                             var instance = scope._retrieveInstance(data.id, data);
                             deferred.resolve(instance);
+                        })
+                        .error(function () {
+                            deferred.reject();
+                        });
+                };
+                this._loadComments = function (id, deferred, parent) {
+                    var scope = this;
+                    $http.get(this.server + objName.toLowerCase() + '/' + id + '/comments')
+                        .success(function (comments) {
+                            console.log("DBG: received comments");
+                            console.dir(comments);
+                            for (var i in comments) {
+                                scope._retrieveComment(comments[i], parent);
+                            }
+                            deferred.resolve(parent);
                         })
                         .error(function () {
                             deferred.reject();
@@ -87,6 +112,21 @@ sharedModule.factory('Manager',
                             deferred.resolve(instance);
                         } else {
                             this._load(id, deferred);
+                        }
+                    }
+                    return deferred.promise;
+                };
+                this.getComments = function (id, force) {
+                    var deferred = $q.defer();
+                    if (!id || id == null || id == "") {
+                        deferred.reject();
+                    } else {
+                        var instance = this._search(id);
+                        if (instance.comments && (!force || force == null)) {
+                            console.log("DBG: comments exist, returning cached obj");
+                            deferred.resolve(instance);
+                        } else {
+                            this._loadComments(id, deferred, instance);
                         }
                     }
                     return deferred.promise;
@@ -130,18 +170,18 @@ sharedModule.factory('Manager',
                     var scope = this;
                     $http.get(this.server + objName.toLowerCase() + 's') // 's' for plural... as in "get all of them"
                         .then(function (response) { // when response is available
-                            var out = [];
-                            response.data.forEach(function (data) {
-                                var instance = scope._retrieveInstance(data.id, data);
-                                out.push(instance);
-                            });
-                            deferred.resolve(out);
-                        }, function (response) { // when there was an error
-                            console.log("couldn't retrieve data for " + objName);
-                            console.dir(response);
-                            deferred.reject();
-                        }
-                    );
+                                var out = [];
+                                response.data.forEach(function (data) {
+                                    var instance = scope._retrieveInstance(data.id, data);
+                                    out.push(instance);
+                                });
+                                deferred.resolve(out);
+                            }, function (response) { // when there was an error
+                                console.log("couldn't retrieve data for " + objName);
+                                console.dir(response);
+                                deferred.reject();
+                            }
+                        );
 
                     return deferred.promise;
                 };
@@ -168,19 +208,19 @@ sharedModule.factory('Manager',
                     var obj = {obj: instance, ut: userToken};
                     $http.post(url, obj)
                         .then(function (response) { // when response is available
-                            if (response.data && response.data.status=="success" && response.data.obj) {
-                                scope._retrieveInstance(response.data.obj.id, response.data.obj);
+                                if (response.data && response.data.status == "success" && response.data.obj) {
+                                    scope._retrieveInstance(response.data.obj.id, response.data.obj);
+                                }
+                                deferred.resolve(response.data);
+                            }, function (response) { // when there was an error
+                                console.log("couldn't post data for " + objName);
+                                console.dir(response);
+                                deferred.reject();
                             }
-                            deferred.resolve(response.data);
-                        }, function (response) { // when there was an error
-                            console.log("couldn't post data for " + objName);
-                            console.dir(response);
-                            deferred.reject();
-                        }
-                    );
+                        );
                     return deferred.promise;
                 };
-                this.update = function (data) {
+                this.update = function (data, updateOnly) {
                     var deferred = $q.defer();
                     var userToken = Login.getUserToken();
                     if (!userToken) {
@@ -195,16 +235,42 @@ sharedModule.factory('Manager',
                         var obj = {obj: instance, ut: userToken};
                         $http.put(url, obj)
                             .then(function (response) { // when response is available
+                                    deferred.resolve(response.data);
+                                }, function (response) { // when there was an error
+                                    console.log("couldn't put data for " + objName);
+                                    console.dir(response);
+                                    deferred.reject();
+                                }
+                            );
+                    }
+                    return deferred.promise;
+                };
+                this.createComment = function (comment, parent) {
+                    var deferred = $q.defer();
+                    var userToken = Login.getUserToken();
+                    if (!userToken) {
+                        console.log("ERROR: usertoken not found");
+                        deferred.reject();
+                    }
+                    var scope = this;
+                    comment.pack();
+                    var url = this.server + objName.toLowerCase() + '/' + parent.id + '/comment';
+                    var obj = {obj: comment, ut: userToken};
+                    $http.post(url, obj)
+                        .then(function (response) { // when response is available
+                                if (response.data && response.data.status == "success" && response.data.obj) {
+                                    scope._retrieveComment(response.data.obj, parent);
+                                }
                                 deferred.resolve(response.data);
                             }, function (response) { // when there was an error
-                                console.log("couldn't put data for " + objName);
+                                console.log("couldn't post comment for " + objName);
                                 console.dir(response);
                                 deferred.reject();
                             }
                         );
-                    }
                     return deferred.promise;
                 };
+
 
             };
 
