@@ -13,7 +13,7 @@
                href="#/app/home/events/{{event.id}}">
                 <img src="img/200px.png">
 
-                <h2><span class="fat">{{event.name}}</span> (TODO: genre)</h2>
+                <h2><span class="fat">{{event.name}}</span> ({{::randomGenre(event.id)}})</h2>
                 <span class="">
                     <time title="{{ event.start | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">
                         {{ event.start | amCalendar }}
