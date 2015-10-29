@@ -11,7 +11,7 @@
             <a ng-repeat="event in events | orderBy:'start'"
                class="item item-thumbnail-left"
                href="#/app/home/events/{{event.id}}">
-                <img src="img/200px.png">
+                <img ng-src="{{event.pics[0]}}">
 
                 <h2><span class="fat">{{event.name}}</span> ({{::randomGenre(event.id)}})</h2>
                 <span class="">

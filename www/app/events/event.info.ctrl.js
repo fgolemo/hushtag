@@ -44,12 +44,18 @@ eventsModule
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };
-        $scope.getHeroStyle = function () {
+        $scope.getHeroStyle = function (eventID) {
             if ($scope.obj && JSON.stringify($scope.obj) != "{}" && $scope.obj.header && $scope.obj.header != "") {
-                return "background-image: url('"+$scope.obj.header+"')";
+                //return "background-image: url('/img/ev-h-"+$scope.obj.header+"')";
+                return "background-image: url('/img/ev-h-"+headers[eventID-1]+"')";
             } else {
                 return "";
             }
-        }
+        };
+        var headers = [
+            "ste.jpg",
+            "mel.jpg",
+            "fie.jpg"
+        ];
     })
 ;
