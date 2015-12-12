@@ -1,7 +1,7 @@
 <ion-view view-title="Stories" hide-back-button="false">
     <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
         <div class="list">
-            <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
             <a ng-repeat="story in hushtag.storiesResolved | orderBy:'-created'"
                class="item item-thumbnail-left"
                href="#/app/home/stories/{{hushtag.id}}/{{story.id}}">

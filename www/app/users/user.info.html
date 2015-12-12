@@ -1,5 +1,6 @@
 <ion-view view-title="Profile">
     <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
         <div ng-show="!login.isLoggedIn()">
             <h4 class="border-top"><i class="icon ion-edit"></i> Login / Sign up</h4>
 
@@ -24,8 +25,6 @@
 
         <div ng-show="login.isLoggedIn()">
             <div class="list">
-                <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
-                </ion-refresher>
                 <div class="item item-avatar">
                     <img ng-src="{{login.getUserAvatar()}}">
                     <h2>{{login.user.name}}</h2>
