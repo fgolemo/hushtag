@@ -2,14 +2,14 @@
   "name": "Hushtag",
   "private": "false",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0"
+    "ionic": "driftyco/ionic-bower#1.2"
   },
   "dependencies": {
-    "angular-elastic": "~2.5.0",
-    "ionic-material": "~0.4.2",
-    "jshashes": "~1.0.5",
-    "ngCordova": "~0.1.20-alpha",
-    "robotodraft": "~1.1.0"
+    "angular-elastic": ">=2.5.0",
+    "ionic-material": ">=0.4.2",
+    "jshashes": ">=1.0.5",
+    "ngCordova": ">=0.1.20-alpha",
+    "robotodraft": ">=1.1.0"
   },
   "resolutions": {
     "angular": ">= 1.2.23"
