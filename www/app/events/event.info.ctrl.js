@@ -46,8 +46,8 @@ eventsModule
         };
         $scope.getHeroStyle = function (eventID) {
             if ($scope.obj && JSON.stringify($scope.obj) != "{}" && $scope.obj.header && $scope.obj.header != "") {
-                //return "background-image: url('/img/ev-h-"+$scope.obj.header+"')";
-                return "background-image: url('/img/ev-h-"+headers[eventID-1]+"')";
+                //return "background-image: url('img/ev-h-"+$scope.obj.header+"')";
+                return "background-image: url('img/ev-h-"+headers[eventID-1]+"')";
             } else {
                 return "";
             }
