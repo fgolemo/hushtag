@@ -30,7 +30,7 @@ eventsModule
         var m = new Modal($scope, "/app/pics/pic.modal.html", angular.noop, angular.noop);
         m.init();
         $scope.showImages = function (index) {
-            $scope.activeSlide = index;
+            $scope.changeSlide(index);
             $scope.modal.show();
         };
         $scope.canEdit = function () {

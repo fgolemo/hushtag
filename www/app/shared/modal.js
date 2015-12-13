@@ -1,4 +1,4 @@
-sharedModule.factory('Modal', ['$ionicModal', function ($ionicModal) {
+sharedModule.factory('Modal', ['$ionicModal', '$ionicSlideBoxDelegate', function ($ionicModal, $ionicSlideBoxDelegate) {
     return function (scope, template, openCB, closeCB) {
 
         this.init = function () {
@@ -9,6 +9,7 @@ sharedModule.factory('Modal', ['$ionicModal', function ($ionicModal) {
                 scope.modal = modal;
             });
             scope.openModal = function() {
+                $ionicSlideBoxDelegate.update();
                 scope.modal.show();
                 if (openCB) {
                     openCB();
@@ -32,6 +33,9 @@ sharedModule.factory('Modal', ['$ionicModal', function ($ionicModal) {
             scope.$on('modal.removed', function() {
                 // Execute action
             });
+            scope.changeSlide = function(index) {
+                scope.activeSlide = index;
+            }
         };
 
     };
