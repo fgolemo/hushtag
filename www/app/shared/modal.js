@@ -35,6 +35,7 @@ sharedModule.factory('Modal', ['$ionicModal', '$ionicSlideBoxDelegate', function
             });
             scope.changeSlide = function(index) {
                 scope.activeSlide = index;
+                $ionicSlideBoxDelegate.slide(index);
             }
         };
 
