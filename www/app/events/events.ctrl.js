@@ -1,7 +1,7 @@
 eventsModule
     .controller('EventsCtrl',
-    ["$scope", "EventsManager", "Resolver", "Login",
-        function ($scope, EventsManager, Resolver, Login) {
+    ["$scope", "EventsManager", "Resolver", "Login", "Tags",
+        function ($scope, EventsManager, Resolver, Login, Tags) {
             $scope.login = Login;
             var loadData = function(force, cb) {
                 EventsManager.m.loadAll(force).then(function (events) {
@@ -33,7 +33,7 @@ eventsModule
                 } else {
                     return genres[Math.floor(Math.random()*genres.length)];
                 }
-            }
+            };
         }
     ]
 );

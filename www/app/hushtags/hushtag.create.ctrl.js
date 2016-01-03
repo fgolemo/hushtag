@@ -1,5 +1,6 @@
 hushtagsModule
     .controller('HushtagCreateCtrl', function ($scope, HushtagsManager, Hushtag, Helper) {
+        Tags.get(true);
         $scope.taskname = "Create Hushtag";
         $scope.hushtag = new Hushtag();
         $scope.update = function () {

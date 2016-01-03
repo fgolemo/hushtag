@@ -9,6 +9,7 @@ angular.module('hushtag', [
     'hushtag.services',
     'hushtag.controllers',
     'hushtag.shared',
+    'hushtag.tags',
     'hushtag.core',
     'hushtag.events',
     'hushtag.locations',

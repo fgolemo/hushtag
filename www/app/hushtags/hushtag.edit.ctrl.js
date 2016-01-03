@@ -1,5 +1,6 @@
 hushtagsModule
     .controller('HushtagEditCtrl', function ($scope, $stateParams, HushtagsManager, Helper) {
+        Tags.get(true);
         $scope.taskname = "Edit Hushtag";
         var objID = $stateParams.hushtag;
         HushtagsManager.m.get(objID).then(function(hushtag) {
