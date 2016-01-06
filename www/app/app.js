@@ -6,6 +6,7 @@ angular.module('hushtag', [
     'hushtag.shared.urlify',
     'angularMoment',
     'monospaced.elastic',
+    'ion-autocomplete',
     'hushtag.services',
     'hushtag.controllers',
     'hushtag.shared',

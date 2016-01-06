@@ -9,7 +9,8 @@
     "ionic-material": ">=0.4.2",
     "jshashes": ">=1.0.5",
     "ngCordova": ">=0.1.20-alpha",
-    "robotodraft": ">=1.1.0"
+    "robotodraft": ">=1.1.0",
+    "ion-autocomplete": "~0.3.1"
   },
   "resolutions": {
     "angular": "1.4.3",

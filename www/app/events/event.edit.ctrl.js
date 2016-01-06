@@ -1,5 +1,5 @@
 eventsModule
-    .controller('EventEditCtrl', function ($scope, $stateParams, EventsManager, $ionicPopup, $location, Helper) {
+    .controller('EventEditCtrl', function ($scope, $stateParams, EventsManager, $ionicPopup, $location, Helper, Tags) {
         Tags.get(true);
         $scope.taskname = "Edit Event";
         var eventID = $stateParams.event;
