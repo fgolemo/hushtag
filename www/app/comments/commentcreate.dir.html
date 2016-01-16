@@ -14,6 +14,7 @@
                     class="elastic"
                     placeholder="enter comment"
                     autofocus
+                    ng-keyup="tags.detect(newComment.content, poHandler, $event)"
             >
             </textarea>
             </label>

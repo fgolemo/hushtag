@@ -1,0 +1,16 @@
+<ion-popover-view>
+    <ion-header-bar>
+        <h3 class="title">select a tag</h3>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+
+            <a ng-repeat="match in popover.matches" class="item item-icon-left" href="#" ng-click="poHandler.closePopover(match)">
+                <i class="icon" ng-class="{ 'ion-person': match.type == 'user', 'ion-location': match.type == 'location',
+                 'ion-volume-medium': match.type == 'event', 'ion-pound': match.type == 'hushtag'}"></i>
+                {{match.name}}
+            </a>
+
+        </div>
+    </ion-content>
+</ion-popover-view>
