@@ -7,11 +7,10 @@ angular.module('hushtag', [
     'angularMoment',
     'monospaced.elastic',
     'ion-autocomplete',
-    'hushtag.services',
-    'hushtag.controllers',
     'hushtag.shared',
     'hushtag.tags',
     'hushtag.core',
+    'hushtag.news',
     'hushtag.events',
     'hushtag.locations',
     'hushtag.pics',
@@ -84,7 +83,7 @@ angular.module('hushtag', [
                 url: "/news",
                 views: {
                     'news': {
-                        templateUrl: "templates/news.html",
+                        templateUrl: "app/news/news.html",
                         controller: 'NewsCtrl'
                     }
                 }
@@ -159,25 +158,6 @@ angular.module('hushtag', [
                 }
             })
 
-            .state('app.playlists', {
-                url: "/playlists",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/playlists.html",
-                        controller: 'PlaylistsCtrl'
-                    }
-                }
-            })
-
-            .state('app.single', {
-                url: "/playlists/:playlistId",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/playlist.html",
-                        controller: 'PlaylistCtrl'
-                    }
-                }
-            })
             .state('app.home.stories', {
                 url: "/stories/:hushtag",
                 views: {
