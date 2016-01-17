@@ -167,12 +167,30 @@ angular.module('hushtag', [
                     }
                 }
             })
+            .state('app.home.story-create', {
+                url: "/stories/:hushtag/create",
+                views: {
+                    'hushtags': {
+                        templateUrl: "app/stories/story.edit.html",
+                        controller: 'StoryCreateCtrl'
+                    }
+                }
+            })
             .state('app.home.story', {
                 url: "/stories/:hushtag/:story",
                 views: {
                     'hushtags': {
                         templateUrl: "app/stories/story.info.html",
                         controller: 'StoryInfoCtrl'
+                    }
+                }
+            })
+            .state('app.home.story-edit', {
+                url: "/stories/:hushtag/:story/edit",
+                views: {
+                    'hushtags': {
+                        templateUrl: "app/stories/story.edit.html",
+                        controller: 'StoryEditCtrl'
                     }
                 }
             })
