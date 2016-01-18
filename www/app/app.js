@@ -66,12 +66,14 @@ angular.module('hushtag', [
             .state('app', {
                 url: "/app",
                 abstract: true,
+                //cache: false, // this doesn't do anything if activated
                 templateUrl: "app/core/app.html",
                 controller: 'AppCtrl'
             })
 
             .state('app.home', {
                 url: "/home",
+                cache: false, // only this makes sure the tabs are refreshed
                 views: {
                     'menuContent': {
                         templateUrl: "app/core/home.html"
