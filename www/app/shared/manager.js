@@ -29,9 +29,6 @@ sharedModule.factory('Manager',
                         case "Event":
                             return new Event(data);
                             break;
-                        //case "Story":
-                        //    return new Story(data);
-                        //    break;
                         default:
                             //TODO: handle error
                             console.log("E: '" + objName + "' is not a valid object name in GenericManager")

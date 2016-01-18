@@ -6,7 +6,7 @@ angular.module('hushtag', [
     'hushtag.shared.urlify',
     'angularMoment',
     'monospaced.elastic',
-    'ion-autocomplete',
+    'ionic-datepicker',
     'hushtag.shared',
     'hushtag.tags',
     'hushtag.core',

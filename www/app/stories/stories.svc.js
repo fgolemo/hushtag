@@ -21,6 +21,8 @@ storiesModule.factory('Story', ["moment", function (moment) {
         flags: [],  // list of IDs of reports/flags, [1123, 1883, 1992, 1221]
         upvotes: 0,   // integer of upvotes
         downvotes: 0,   // integer of downvotes
+        postUser: true, // true if poster wants to post username, false if anonymous
+        postEvent: true, // true if the user wants to add event to the story
         hasVoted: false,// boolean, indicator if the user himself has voted
         refs: [
             {
