@@ -1,9 +1,13 @@
 sharedModule.service('Helper', ['$ionicPopup', '$location', function ($ionicPopup, $location) {
     this.updateCallback = function (type, response, customPath) {
         if (response.status == "success") {
-            $ionicPopup.alert({
+            $ionicPopup.show({
                 title: "Done",
-                template: type.capitalize() + " successfully updated"
+                template: type.capitalize() + " successfully updated",
+                buttons: [{
+                    text: 'OK',
+                    type: 'button-royal'
+                }]
             }).then(function () {
                 if (customPath) {
                     $location.path(customPath);
