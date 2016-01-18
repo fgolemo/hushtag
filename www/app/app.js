@@ -159,7 +159,7 @@ angular.module('hushtag', [
             })
 
             .state('app.home.stories', {
-                url: "/stories/:hushtag",
+                url: "/stories/:hushtag?",
                 views: {
                     'hushtags': {
                         templateUrl: "app/stories/stories.html",

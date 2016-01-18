@@ -38,9 +38,8 @@ storiesModule
                 $scope.obj.owner = Login.user.id;
             }
             StoriesManager.m.create($scope.obj).then(function (response) {
-                console.log( "response obj:");
-                console.dir(response.obj);
-                var customPath = "/app/home/stories/"+ response.obj.hushtag+ "/" + response.obj.id;
+                //var customPath = "/app/home/stories/"+ response.obj.hushtag+ "/" + response.obj.id;
+                var customPath = "/app/home/stories/"+ response.obj.hushtag+"?refresh=1";
                 Helper.updateCallback("story", response, customPath);
             });
         };
