@@ -1,5 +1,5 @@
 storiesModule
-    .controller('StoryInfoCtrl', function ($scope, StoriesManager, $stateParams, Resolver, moment) {
+    .controller('StoryInfoCtrl', function ($scope, StoriesManager, $stateParams, Resolver, Login) {
         var objID = $stateParams.story;
         //var objID = $stateParams.hushtag;
         var loadobj = function(forced, cb) {
@@ -21,5 +21,11 @@ storiesModule
             });
         };
         loadobj(false);
+        $scope.canEdit = function () {
+            if (!$scope.obj || $scope.obj == {} || $scope.obj == null) {
+                return false;
+            }
+            return Login.canEdit($scope.obj.owner, 1);
+        };
     })
 ;

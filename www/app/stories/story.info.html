@@ -1,4 +1,9 @@
 <ion-view view-title="{{obj.hushtagResolved.name}} Story">
+    <button
+            class="button button-fab button-energized icon ion-edit button-fab-bottom-right"
+            go-click="/app/home/stories/{{obj.hushtag}}/{{obj.id}}/edit"
+            ng-show="canEdit()">
+    </button>
     <ion-content>
         <div class="list">
             <div class="item">
